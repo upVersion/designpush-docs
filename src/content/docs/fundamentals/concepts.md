@@ -28,13 +28,13 @@ CSS custom properties and SCSS variables are *mechanisms* for storing values. De
 ## Why use design tokens?
 
 ### Consistency
-Every button, card, and input uses the same spacing, colors, and typography — because they all reference the same tokens. No more "is this `#333` or `#334`?" debates.
+Every button, card, and input uses the same spacing, colors, and typography — because they all reference the same tokens. 
 
 ### Speed
-Change your brand color once and it propagates everywhere. Redesigns that used to take weeks become a matter of updating a few token values.
+Change your brand color once and it propagates everywhere.
 
 ### Maintainability
-Tokens create a single source of truth. Developers don't need to ask designers for hex codes. Designers don't need to audit code for drift. The tokens *are* the spec.
+Tokens create a single source of truth. Developers don't need to ask designers for hex codes. Designers don't need to spec values. The tokens *are* the spec.
 
 ### Multi-platform
 The same token definitions export to CSS, SCSS, JavaScript, TypeScript, and Tailwind. One set of decisions, every format your team needs.
@@ -77,7 +77,7 @@ Primitives are the raw materials. They define *what values exist* without saying
 | Spacing | Named scale from `zero` to `6xl` |
 | Radius | Corner rounding from `zero` to `full` |
 | Border Width | `none` through `thick` |
-| Shadow | Elevation levels 1-5 with light/dark variants |
+| Shadow | Elevation levels 1-5 |
 | Opacity | Alpha values from 0 to 100 |
 | Duration | Animation timing from `instant` to `slower` |
 | Easing | Curves like `standard`, `decelerate`, `bounce` |
