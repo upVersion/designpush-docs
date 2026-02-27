@@ -1,0 +1,952 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400..700&family=Roboto+Mono:wght@100..700&family=Major+Mono+Display:wght@400&family=Onest:wght@100;200;300;400;500;600;700;800;900&family=Recursive:wght@300;400;500;600;700;800;900&family=Sono:wght@200;300;400;500;600;700;800&display=swap');
+
+/**
+ * Design System - Core Tokens
+ * Auto-generated - Do not edit directly
+ *
+ * Contains: Primitive + Semantic layers
+ * Load this file BEFORE components/variables.css
+ */
+
+/* ============================================
+   PRIMITIVE LAYER
+   Raw values - same in all themes
+   ============================================ */
+:root {
+  --primitive-color-brand-primary-50: #F2F6FA;
+  --primitive-color-brand-primary-100: #DFEAF6;
+  --primitive-color-brand-primary-200: #C4D9F1;
+  --primitive-color-brand-primary-300: #A3C4E8;
+  --primitive-color-brand-primary-400: #77A8DC;
+  --primitive-color-brand-primary-500: #0168B5;
+  --primitive-color-brand-primary-600: #004F8B;
+  --primitive-color-brand-primary-700: #003663;
+  --primitive-color-brand-primary-800: #002445;
+  --primitive-color-brand-primary-900: #00162E;
+  --primitive-color-brand-primary-950: #000B1D;
+  --primitive-color-brand-secondary-50: #FFF2EF;
+  --primitive-color-brand-secondary-100: #FFE6E0;
+  --primitive-color-brand-secondary-200: #FFD3CA;
+  --primitive-color-brand-secondary-300: #FFBBAD;
+  --primitive-color-brand-secondary-400: #FF9985;
+  --primitive-color-brand-secondary-500: #EE442A;
+  --primitive-color-brand-secondary-600: #BB2208;
+  --primitive-color-brand-secondary-700: #831000;
+  --primitive-color-brand-secondary-800: #580700;
+  --primitive-color-brand-secondary-900: #360200;
+  --primitive-color-brand-secondary-950: #1C0201;
+  --primitive-color-brand-accent-50: #FFF4DF;
+  --primitive-color-brand-accent-100: #FFEFD2;
+  --primitive-color-brand-accent-200: #FFE8BE;
+  --primitive-color-brand-accent-300: #FFDFA4;
+  --primitive-color-brand-accent-400: #FFD27D;
+  --primitive-color-brand-accent-500: #F7B719;
+  --primitive-color-brand-accent-600: #B78600;
+  --primitive-color-brand-accent-700: #7A5800;
+  --primitive-color-brand-accent-800: #4D3600;
+  --primitive-color-brand-accent-900: #2A1C00;
+  --primitive-color-brand-accent-950: #120A00;
+  --primitive-color-neutral-gray-50: #F1F6F6;
+  --primitive-color-neutral-gray-100: #E4E9E8;
+  --primitive-color-neutral-gray-200: #D1D5D5;
+  --primitive-color-neutral-gray-300: #B1B5B5;
+  --primitive-color-neutral-gray-400: #8C9090;
+  --primitive-color-neutral-gray-500: #6E7272;
+  --primitive-color-neutral-gray-600: #525656;
+  --primitive-color-neutral-gray-700: #3D4140;
+  --primitive-color-neutral-gray-800: #242727;
+  --primitive-color-neutral-gray-900: #0F1212;
+  --primitive-color-neutral-gray-950: #040606;
+  --primitive-color-neutral-gray-white: #FFFFFF; /* Pure white */
+  --primitive-color-neutral-gray-black: #000000; /* Pure black */
+  --primitive-color-feedback-warning-50: #FFF3E5;
+  --primitive-color-feedback-warning-100: #FFECD8;
+  --primitive-color-feedback-warning-200: #FFE2C2;
+  --primitive-color-feedback-warning-300: #FFD6A7;
+  --primitive-color-feedback-warning-400: #FFC47E;
+  --primitive-color-feedback-warning-500: #F59E0B;
+  --primitive-color-feedback-warning-600: #B67400;
+  --primitive-color-feedback-warning-700: #7A4C00;
+  --primitive-color-feedback-warning-800: #4E2F00;
+  --primitive-color-feedback-warning-900: #2C1800;
+  --primitive-color-feedback-warning-950: #140800;
+  --primitive-color-feedback-error-50: #FFF1F0;
+  --primitive-color-feedback-error-100: #FFE4E1;
+  --primitive-color-feedback-error-200: #FFD0CB;
+  --primitive-color-feedback-error-300: #FFB5AE;
+  --primitive-color-feedback-error-400: #FF8F86;
+  --primitive-color-feedback-error-500: #df3e3e;
+  --primitive-color-feedback-error-600: #B01F24;
+  --primitive-color-feedback-error-700: #7D0A13;
+  --primitive-color-feedback-error-800: #550409;
+  --primitive-color-feedback-error-900: #340304;
+  --primitive-color-feedback-error-950: #1C0202;
+  --primitive-color-feedback-success-50: #DFFFE4;
+  --primitive-color-feedback-success-100: #C7FFD1;
+  --primitive-color-feedback-success-200: #9DFFB2;
+  --primitive-color-feedback-success-300: #89F5A1;
+  --primitive-color-feedback-success-400: #6EE68C;
+  --primitive-color-feedback-success-500: #22C55E;
+  --primitive-color-feedback-success-600: #009341;
+  --primitive-color-feedback-success-700: #006329;
+  --primitive-color-feedback-success-800: #003F18;
+  --primitive-color-feedback-success-900: #00230A;
+  --primitive-color-feedback-success-950: #001003;
+  --primitive-color-feedback-info-50: #EFF6FF;
+  --primitive-color-feedback-info-100: #E1EDFF;
+  --primitive-color-feedback-info-200: #CCE0FF;
+  --primitive-color-feedback-info-300: #B1CFFF;
+  --primitive-color-feedback-info-400: #8CB8FF;
+  --primitive-color-feedback-info-500: #3B82F6;
+  --primitive-color-feedback-info-600: #205FC4;
+  --primitive-color-feedback-info-700: #0E3F8C;
+  --primitive-color-feedback-info-800: #06285F;
+  --primitive-color-feedback-info-900: #03163A;
+  --primitive-color-feedback-info-950: #020A1F;
+  --primitive-typography-family-display: 'Major Mono Display';
+  --primitive-typography-family-heading: 'Instrument Sans';
+  --primitive-typography-family-body: 'Instrument Sans';
+  --primitive-typography-family-mono: 'Roboto Mono';
+  --primitive-typography-size-xs: clamp(0.607625rem, 0.5729rem + 0.1736vw, 0.78125rem);
+  --primitive-typography-size-sm: clamp(0.7291875rem, 0.6875rem + 0.2083vw, 0.9375rem);
+  --primitive-typography-size-base: clamp(0.875rem, 0.8250rem + 0.2500vw, 1.125rem);
+  --primitive-typography-size-lg: clamp(1.05rem, 0.9900rem + 0.3000vw, 1.35rem);
+  --primitive-typography-size-xl: clamp(1.26rem, 1.1880rem + 0.3600vw, 1.62rem);
+  --primitive-typography-size-2xl: clamp(1.512rem, 1.4256rem + 0.4320vw, 1.944rem);
+  --primitive-typography-size-3xl: clamp(1.814375rem, 1.7107rem + 0.5184vw, 2.3328125rem);
+  --primitive-typography-size-4xl: clamp(2.17725rem, 2.0528rem + 0.6221vw, 2.799375rem);
+  --primitive-typography-size-5xl: clamp(2.61275rem, 2.4635rem + 0.7465vw, 3.35925rem);
+  --primitive-typography-size-6xl: clamp(3.1353125rem, 2.9562rem + 0.8958vw, 4.0310625rem);
+  --primitive-typography-size-7xl: clamp(3.7623125rem, 3.5473rem + 1.0750vw, 4.8373125rem);
+  --primitive-typography-size-8xl: clamp(4.5148125rem, 4.2568rem + 1.2899vw, 5.80475rem);
+  --primitive-typography-size-9xl: clamp(5.41775rem, 5.1082rem + 1.5479vw, 6.9656875rem);
+  --primitive-typography-weight-thin: 100;
+  --primitive-typography-weight-extralight: 200;
+  --primitive-typography-weight-light: 300;
+  --primitive-typography-weight-normal: 400;
+  --primitive-typography-weight-medium: 500;
+  --primitive-typography-weight-semibold: 600;
+  --primitive-typography-weight-bold: 700;
+  --primitive-typography-weight-extrabold: 800;
+  --primitive-typography-weight-black: 900;
+  --primitive-typography-line-height-none: 1;
+  --primitive-typography-line-height-tight: 1.25;
+  --primitive-typography-line-height-snug: 1.375;
+  --primitive-typography-line-height-normal: 1.5;
+  --primitive-typography-line-height-relaxed: 1.625;
+  --primitive-typography-line-height-loose: 2;
+  --primitive-typography-letter-spacing-tighter: -0.05em;
+  --primitive-typography-letter-spacing-tight: -0.025em;
+  --primitive-typography-letter-spacing-normal: 0em;
+  --primitive-typography-letter-spacing-wide: 0.025em;
+  --primitive-typography-letter-spacing-wider: 0.05em;
+  --primitive-typography-letter-spacing-widest: 0.1em;
+  --primitive-typography-text-transform-none: none;
+  --primitive-typography-text-transform-uppercase: uppercase;
+  --primitive-typography-text-transform-lowercase: lowercase;
+  --primitive-typography-text-transform-capitalize: capitalize;
+  --primitive-typography-defaults-display-weight: 400;
+  --primitive-typography-defaults-display-line-height: var(--primitive-typography-line-height-tight);
+  --primitive-typography-defaults-display-letter-spacing: var(--primitive-typography-letter-spacing-normal);
+  --primitive-typography-defaults-display-text-transform: var(--primitive-typography-text-transform-lowercase);
+  --primitive-typography-defaults-heading-weight: 700;
+  --primitive-typography-defaults-heading-line-height: var(--primitive-typography-line-height-normal);
+  --primitive-typography-defaults-heading-letter-spacing: var(--primitive-typography-letter-spacing-normal);
+  --primitive-typography-defaults-heading-text-transform: var(--primitive-typography-text-transform-none);
+  --primitive-typography-defaults-body-weight: 400;
+  --primitive-typography-defaults-body-line-height: var(--primitive-typography-line-height-normal);
+  --primitive-typography-defaults-body-letter-spacing: var(--primitive-typography-letter-spacing-normal);
+  --primitive-typography-defaults-body-text-transform: var(--primitive-typography-text-transform-none);
+  --primitive-typography-defaults-mono-weight: 400;
+  --primitive-typography-defaults-mono-line-height: var(--primitive-typography-line-height-normal);
+  --primitive-typography-defaults-mono-letter-spacing: var(--primitive-typography-letter-spacing-tight);
+  --primitive-typography-defaults-mono-text-transform: var(--primitive-typography-text-transform-none);
+  --primitive-typography-config-fluid-enabled: true;
+  --primitive-typography-config-base-size: 16;
+  --primitive-typography-config-min-base-size: 14;
+  --primitive-typography-config-max-base-size: 18;
+  --primitive-typography-config-ratio: Minor Third;
+  --primitive-typography-config-min-viewport: 320;
+  --primitive-typography-config-max-viewport: 1920;
+  --primitive-typography-customfonts-0-name: Major Mono Display;
+  --primitive-typography-customfonts-0-fontfamily: Major Mono Display;
+  --primitive-typography-customfonts-0-category: monospace;
+  --primitive-typography-customfonts-0-source: google;
+  --primitive-typography-customfonts-1-name: Onest;
+  --primitive-typography-customfonts-1-fontfamily: Onest;
+  --primitive-typography-customfonts-1-category: sans-serif;
+  --primitive-typography-customfonts-1-source: google;
+  --primitive-typography-customfonts-2-name: Recursive;
+  --primitive-typography-customfonts-2-fontfamily: Recursive;
+  --primitive-typography-customfonts-2-category: sans-serif;
+  --primitive-typography-customfonts-2-source: google;
+  --primitive-typography-customfonts-3-name: Sono;
+  --primitive-typography-customfonts-3-fontfamily: Sono;
+  --primitive-typography-customfonts-3-category: sans-serif;
+  --primitive-typography-customfonts-3-source: google;
+  --primitive-spacing-zero: 0rem; /* No spacing */
+  --primitive-spacing-xs: 0.125rem; /* Tiny gaps, inline elements */
+  --primitive-spacing-sm: 0.25rem; /* Component padding, small gaps */
+  --primitive-spacing-md: 0.375rem; /* Standard spacing, card padding */
+  --primitive-spacing-lg: 0.5rem; /* Section spacing, large gaps */
+  --primitive-spacing-xl: 0.75rem; /* Extra large spacing */
+  --primitive-spacing-2xl: 1rem; /* Section margins */
+  --primitive-spacing-3xl: 1.5rem; /* Large section spacing */
+  --primitive-spacing-4xl: 2rem; /* Hero section spacing */
+  --primitive-spacing-5xl: 3rem; /* Major layout divisions */
+  --primitive-spacing-6xl: 4rem; /* Massive layout spacing */
+  --primitive-radius-zero: 0rem; /* No rounding - sharp corners */
+  --primitive-radius-xs: 0.125rem; /* Extra small - subtle rounding */
+  --primitive-radius-sm: 0.1875rem; /* Small - buttons, inputs */
+  --primitive-radius-md: 0.375rem; /* Medium - cards, panels */
+  --primitive-radius-lg: 0.5625rem; /* Large - modals, dialogs */
+  --primitive-radius-xl: 1rem; /* Extra large - prominent cards */
+  --primitive-radius-2xl: 1.5rem; /* Very large - hero sections */
+  --primitive-radius-full: 624.9375rem; /* Fully rounded - pills, avatars */
+  --primitive-border-width-none: 0px; /* No border */
+  --primitive-border-width-thin: 0.5px; /* Delicate, hairline borders */
+  --primitive-border-width-regular: 1px; /* Standard borders (recommended) */
+  --primitive-border-width-medium: 2px; /* Emphasis borders */
+  --primitive-border-width-bold: 2.5px; /* Strong borders */
+  --primitive-border-width-heavy: 3px; /* Maximum emphasis borders */
+  --primitive-breakpoint-xs: 320px; /* Small mobile */
+  --primitive-breakpoint-sm: 640px; /* Mobile  */
+  --primitive-breakpoint-md: 768px; /* Tablet */
+  --primitive-breakpoint-lg: 1024px; /* Desktop */
+  --primitive-breakpoint-xl: 1280px; /* Large desktop */
+  --primitive-breakpoint-2xl: 1536px; /* Extra large desktop */
+  --primitive-layout-xs: 640px; /* Extra small container */
+  --primitive-layout-sm: 768px; /* Small container  */
+  --primitive-layout-md: 1024px; /* Medium container */
+  --primitive-layout-lg: 1280px; /* Large container */
+  --primitive-layout-xl: 1536px; /* Extra large container */
+  --primitive-layout-cols: 12; /* Default grid columns */
+  --primitive-layout-gutter: 24px; /* Default grid gap */
+  --primitive-shadow-elevation-1: 0px 0px 2px 1px rgba(0, 0, 0, 0); /* Cards, tiles, buttons */
+  --primitive-shadow-elevation-2: 0px 4px 4px 0px rgba(0, 0, 0, 0.06), 0px 1px 2px 0px rgba(0, 0, 0, 0.03); /* Raised cards, dropdowns */
+  --primitive-shadow-elevation-3: 0px -1px 16px 0px rgba(0, 0, 0, 0.08), 0px 2px 4px 0px rgba(0, 0, 0, 0.04); /* Floating elements, tooltips.  Menu toolbars */
+  --primitive-shadow-elevation-4: 0px 0px 16px 0px rgba(0, 0, 0, 0.1), 0px 4px 8px 0px rgba(0, 0, 0, 0.05); /* Modals, popovers */
+  --primitive-shadow-elevation-5: 0px 2px 24px 0px rgba(0, 0, 0, 0.29), 0px 0px 12px -13px rgba(0, 0, 0, 0.03); /* Dialogs, drawers, tab bar */
+  --primitive-shadow-elevation-6: 0px 5px 24px 5px rgba(0, 0, 0, 0.12), 0px 8px 16px 0px rgba(0, 0, 0, 0.07); /* Top-level overlays */
+  --primitive-opacity-alpha-0: 0; /* 0% */
+  --primitive-opacity-alpha-5: 0.05; /* 5% */
+  --primitive-opacity-alpha-10: 0.1; /* 10% */
+  --primitive-opacity-alpha-20: 0.2; /* 20% */
+  --primitive-opacity-alpha-25: 0.25; /* 25% */
+  --primitive-opacity-alpha-30: 0.3; /* 30% */
+  --primitive-opacity-alpha-40: 0.4; /* 40% */
+  --primitive-opacity-alpha-50: 0.5; /* 50% */
+  --primitive-opacity-alpha-60: 0.6; /* 60% */
+  --primitive-opacity-alpha-70: 0.7; /* 70% */
+  --primitive-opacity-alpha-75: 0.75; /* 75% */
+  --primitive-opacity-alpha-80: 0.8; /* 80% */
+  --primitive-opacity-alpha-90: 0.9; /* 90% */
+  --primitive-opacity-alpha-95: 0.95; /* 95% */
+  --primitive-opacity-alpha-100: 1; /* 100% */
+  --primitive-z-index-layer-10: 10; /* Dropdown layer */
+  --primitive-z-index-layer-20: 20; /* Sticky layer */
+  --primitive-z-index-layer-30: 30; /* Fixed layer */
+  --primitive-z-index-layer-40: 40; /* Modal backdrop */
+  --primitive-z-index-layer-50: 50; /* Modal layer */
+  --primitive-z-index-layer-60: 60; /* Popover layer */
+  --primitive-z-index-layer-70: 70; /* Tooltip layer */
+  --primitive-z-index-layer-max: 9999; /* Maximum layer */
+  --primitive-z-index-layer-base: 0; /* Base layer */
+  --primitive-duration-instant: 0ms; /* No animation - immediate change */
+  --primitive-duration-fast: 150ms; /* Quick interactions - hover, active states */
+  --primitive-duration-base: 300ms; /* Standard transitions - most UI elements */
+  --primitive-duration-moderate: 500ms; /* Deliberate animations - panels, modals */
+  --primitive-duration-slow: 700ms; /* Emphasized motion - page transitions */
+  --primitive-duration-slower: 1000ms; /* Very slow - special animations */
+  --primitive-easing-linear: linear; /* No acceleration - constant speed */
+  --primitive-easing-ease: ease; /* Default easing - gradual acceleration */
+  --primitive-easing-ease-in: ease-in; /* Slow start - accelerating */
+  --primitive-easing-ease-out: ease-out; /* Fast start - decelerating */
+  --primitive-easing-ease-in-out: ease-in-out; /* Slow start and end - smooth */
+  --primitive-easing-standard: cubic-bezier(0.4, 0.0, 0.2, 1); /* Material Design standard */
+  --primitive-easing-decelerate: cubic-bezier(0.0, 0.0, 0.2, 1); /* Elements entering screen */
+  --primitive-easing-accelerate: cubic-bezier(0.4, 0.0, 1, 1); /* Elements leaving screen */
+  --primitive-easing-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Playful bounce effect */
+  --primitive-icon-size-xs: 12px; /* Inline text, badges */
+  --primitive-icon-size-sm: 16px; /* Small buttons, inline icons */
+  --primitive-icon-size-md: 20px; /* Standard UI icons, buttons */
+  --primitive-icon-size-lg: 24px; /* Navigation, toolbars */
+  --primitive-icon-size-xl: 32px; /* Feature icons, cards */
+  --primitive-icon-size-2xl: 40px; /* Large feature icons */
+  --primitive-icon-size-3xl: 48px; /* Hero sections, empty states */
+  --primitive-icon-size-4xl: 64px; /* Marketing, landing pages */
+  --primitive-icon-stroke-thin: 1px; /* Delicate, minimal icons */
+  --primitive-icon-stroke-regular: 1.5px; /* Standard icons (recommended) */
+  --primitive-icon-stroke-medium: 2px; /* Emphasis, larger icons */
+  --primitive-icon-stroke-bold: 2.5px; /* Strong emphasis, branding */
+  --primitive-icon-stroke-heavy: 3px; /* Maximum emphasis, display */
+
+}
+
+/* ============================================
+   SEMANTIC LAYER - LIGHT THEME
+   Theme-aware tokens referencing primitive
+   ============================================ */
+:root,
+[data-theme="light"] {
+  --semantic-color-text-neutral-subtle: var(--primitive-color-neutral-gray-400); /* Captions, hints, placeholder text */
+  --semantic-color-text-neutral-default: var(--primitive-color-neutral-gray-700); /* Body text, standard UI text */
+  --semantic-color-text-neutral-bold: var(--primitive-color-neutral-gray-900); /* Emphasized body text, strong labels */
+  --semantic-color-text-neutral-contrast: var(--primitive-color-neutral-gray-50); /* Text on dark/bold neutral surfaces */
+  --semantic-color-text-primary-subtle: var(--primitive-color-brand-primary-400); /* De-emphasized brand text, hints */
+  --semantic-color-text-primary-default: var(--primitive-color-brand-primary-600); /* Headlines, emphasis, primary brand expression */
+  --semantic-color-text-primary-bold: var(--primitive-color-brand-primary-800); /* Maximum emphasis brand text */
+  --semantic-color-text-primary-contrast: var(--primitive-color-brand-primary-50); /* Brand text on bold primary surfaces */
+  --semantic-color-text-secondary-subtle: var(--primitive-color-brand-secondary-400); /* De-emphasized secondary text */
+  --semantic-color-text-secondary-default: var(--primitive-color-brand-secondary-600); /* Subheaders, supporting hierarchy */
+  --semantic-color-text-secondary-bold: var(--primitive-color-brand-secondary-800); /* Emphasized secondary text */
+  --semantic-color-text-secondary-contrast: var(--primitive-color-brand-secondary-50); /* Secondary text on bold secondary surfaces */
+  --semantic-color-text-accent-subtle: var(--primitive-color-brand-accent-400); /* De-emphasized accent text */
+  --semantic-color-text-accent-default: var(--primitive-color-brand-accent-600); /* Highlights, decorative emphasis */
+  --semantic-color-text-accent-bold: var(--primitive-color-brand-accent-800); /* Strong accent text */
+  --semantic-color-text-accent-contrast: var(--primitive-color-brand-accent-50); /* Accent text on bold accent surfaces */
+  --semantic-color-text-success-subtle: var(--primitive-color-feedback-success-400); /* De-emphasized success text */
+  --semantic-color-text-success-default: var(--primitive-color-feedback-success-600); /* Success messages, confirmations */
+  --semantic-color-text-success-bold: var(--primitive-color-feedback-success-800); /* Emphasized success text */
+  --semantic-color-text-success-contrast: var(--primitive-color-feedback-success-50); /* Text on bold success surfaces */
+  --semantic-color-text-warning-subtle: var(--primitive-color-feedback-warning-400); /* De-emphasized warning text */
+  --semantic-color-text-warning-default: var(--primitive-color-feedback-warning-600); /* Warning messages, cautions */
+  --semantic-color-text-warning-bold: var(--primitive-color-feedback-warning-800); /* Emphasized warning text */
+  --semantic-color-text-warning-contrast: var(--primitive-color-feedback-warning-50); /* Text on bold warning surfaces */
+  --semantic-color-text-error-subtle: var(--primitive-color-feedback-error-400); /* De-emphasized error text */
+  --semantic-color-text-error-default: var(--primitive-color-feedback-error-600); /* Error messages, validation */
+  --semantic-color-text-error-bold: var(--primitive-color-feedback-error-800); /* Emphasized error text */
+  --semantic-color-text-error-contrast: var(--primitive-color-feedback-error-50); /* Text on bold error surfaces */
+  --semantic-color-text-info-subtle: var(--primitive-color-feedback-info-400); /* De-emphasized info text */
+  --semantic-color-text-info-default: var(--primitive-color-feedback-info-600); /* Informational messages, tips */
+  --semantic-color-text-info-bold: var(--primitive-color-feedback-info-800); /* Emphasized info text */
+  --semantic-color-text-info-contrast: var(--primitive-color-feedback-info-50); /* Text on bold info surfaces */
+  --semantic-color-text-disabled: var(--primitive-color-neutral-gray-400); /* Text color for disabled elements */
+  --semantic-color-surface-neutral-subtle: var(--primitive-color-neutral-gray-100); /* Page canvas, recessed areas */
+  --semantic-color-surface-neutral-default: var(--primitive-color-neutral-gray-200); /* Cards, containers, panels */
+  --semantic-color-surface-neutral-bold: var(--primitive-color-neutral-gray-800); /* Inverted surfaces, dark callouts */
+  --semantic-color-surface-primary-subtle: var(--primitive-color-brand-primary-100); /* Light brand tint, card backgrounds */
+  --semantic-color-surface-primary-default: var(--primitive-color-brand-primary-200); /* Medium brand surface, hover states */
+  --semantic-color-surface-primary-bold: var(--primitive-color-brand-primary-500); /* Strong brand surface, filled badges, callouts */
+  --semantic-color-surface-secondary-subtle: var(--primitive-color-brand-secondary-100); /* Light secondary tint */
+  --semantic-color-surface-secondary-default: var(--primitive-color-brand-secondary-200); /* Medium secondary surface */
+  --semantic-color-surface-secondary-bold: var(--primitive-color-brand-secondary-500); /* Strong secondary surface */
+  --semantic-color-surface-accent-subtle: var(--primitive-color-brand-accent-100); /* Light accent tint */
+  --semantic-color-surface-accent-default: var(--primitive-color-brand-accent-200); /* Medium accent surface */
+  --semantic-color-surface-accent-bold: var(--primitive-color-brand-accent-600); /* Strong accent surface */
+  --semantic-color-surface-success-subtle: var(--primitive-color-feedback-success-100); /* Success backgrounds, banners */
+  --semantic-color-surface-success-default: var(--primitive-color-feedback-success-200); /* Medium success surface */
+  --semantic-color-surface-success-bold: var(--primitive-color-feedback-success-500); /* Strong success surface, filled badges */
+  --semantic-color-surface-warning-subtle: var(--primitive-color-feedback-warning-100); /* Warning backgrounds, banners */
+  --semantic-color-surface-warning-default: var(--primitive-color-feedback-warning-200); /* Medium warning surface */
+  --semantic-color-surface-warning-bold: var(--primitive-color-feedback-warning-500); /* Strong warning surface, filled badges */
+  --semantic-color-surface-error-subtle: var(--primitive-color-feedback-error-100); /* Error backgrounds, banners */
+  --semantic-color-surface-error-default: var(--primitive-color-feedback-error-200); /* Medium error surface */
+  --semantic-color-surface-error-bold: var(--primitive-color-feedback-error-500); /* Strong error surface, filled badges */
+  --semantic-color-surface-info-subtle: var(--primitive-color-feedback-info-100); /* Info backgrounds, banners */
+  --semantic-color-surface-info-default: var(--primitive-color-feedback-info-200); /* Medium info surface */
+  --semantic-color-surface-info-bold: var(--primitive-color-feedback-info-500); /* Strong info surface, filled badges */
+  --semantic-color-surface-disabled: var(--primitive-color-neutral-gray-200); /* Disabled surface background */
+  --semantic-color-border-neutral-subtle: var(--primitive-color-neutral-gray-100); /* Subtle dividers, card edges */
+  --semantic-color-border-neutral-default: var(--primitive-color-neutral-gray-400); /* Standard borders, input fields */
+  --semantic-color-border-neutral-bold: var(--primitive-color-neutral-gray-700); /* Strong borders, emphasis, active states */
+  --semantic-color-border-primary-subtle: var(--primitive-color-brand-primary-200); /* Light brand border, subtle dividers */
+  --semantic-color-border-primary-default: var(--primitive-color-brand-primary-500); /* Standard brand border, inputs on focus */
+  --semantic-color-border-primary-bold: var(--primitive-color-brand-primary-700); /* Strong brand border, emphasis */
+  --semantic-color-border-secondary-subtle: var(--primitive-color-brand-secondary-200); /* Light secondary border */
+  --semantic-color-border-secondary-default: var(--primitive-color-brand-secondary-500); /* Standard secondary border */
+  --semantic-color-border-secondary-bold: var(--primitive-color-brand-secondary-700); /* Strong secondary border */
+  --semantic-color-border-accent-subtle: var(--primitive-color-brand-accent-200); /* Light accent border */
+  --semantic-color-border-accent-default: var(--primitive-color-brand-accent-500); /* Standard accent border */
+  --semantic-color-border-accent-bold: var(--primitive-color-brand-accent-700); /* Strong accent border */
+  --semantic-color-border-success-subtle: var(--primitive-color-feedback-success-200); /* Light success border */
+  --semantic-color-border-success-default: var(--primitive-color-feedback-success-500); /* Success state borders, valid inputs */
+  --semantic-color-border-success-bold: var(--primitive-color-feedback-success-700); /* Strong success border */
+  --semantic-color-border-warning-subtle: var(--primitive-color-feedback-warning-200); /* Light warning border */
+  --semantic-color-border-warning-default: var(--primitive-color-feedback-warning-500); /* Warning state borders */
+  --semantic-color-border-warning-bold: var(--primitive-color-feedback-warning-700); /* Strong warning border */
+  --semantic-color-border-error-subtle: var(--primitive-color-feedback-error-200); /* Light error border */
+  --semantic-color-border-error-default: var(--primitive-color-feedback-error-500); /* Error state borders, invalid inputs */
+  --semantic-color-border-error-bold: var(--primitive-color-feedback-error-700); /* Strong error border */
+  --semantic-color-border-info-subtle: var(--primitive-color-feedback-info-200); /* Light info border */
+  --semantic-color-border-info-default: var(--primitive-color-feedback-info-500); /* Info state borders */
+  --semantic-color-border-info-bold: var(--primitive-color-feedback-info-700); /* Strong info border */
+  --semantic-color-border-disabled: var(--primitive-color-neutral-gray-400); /* Disabled border color */
+  --semantic-color-contrast-light: var(--primitive-color-neutral-gray-white);
+  --semantic-color-contrast-dark: var(--primitive-color-neutral-gray-black);
+  --semantic-color-interactive-primary-default: var(--primitive-color-neutral-gray-800); /* Primary interactive default surface */
+  --semantic-color-interactive-primary-hover: var(--primitive-color-neutral-gray-700); /* Primary interactive hover surface */
+  --semantic-color-interactive-primary-active: var(--primitive-color-brand-primary-700); /* Primary interactive active surface */
+  --semantic-color-interactive-primary-disabled: var(--primitive-color-neutral-gray-200); /* Primary interactive disabled surface */
+  --semantic-color-interactive-primary-text: var(--primitive-color-brand-primary-50); /* Text color on primary interactive surfaces */
+  --semantic-color-interactive-primary-text-disabled: var(--primitive-color-neutral-gray-600); /* Disabled text color on primary interactive surfaces */
+  --semantic-color-interactive-secondary-default: var(--primitive-color-brand-secondary-700); /* Secondary interactive default surface */
+  --semantic-color-interactive-secondary-hover: var(--primitive-color-brand-secondary-800); /* Secondary interactive hover surface */
+  --semantic-color-interactive-secondary-active: var(--primitive-color-brand-secondary-900); /* Secondary interactive active surface */
+  --semantic-color-interactive-secondary-disabled: var(--primitive-color-neutral-gray-50); /* Secondary interactive disabled surface */
+  --semantic-color-interactive-secondary-text: var(--primitive-color-brand-primary-800); /* Text color on secondary interactive surfaces */
+  --semantic-color-interactive-secondary-text-disabled: var(--primitive-color-neutral-gray-400); /* Disabled text color on secondary interactive surfaces */
+  --semantic-color-interactive-tertiary-default: var(--primitive-color-brand-accent-700); /* Tertiary interactive default surface */
+  --semantic-color-interactive-tertiary-hover: var(--primitive-color-brand-accent-800); /* Tertiary interactive hover surface */
+  --semantic-color-interactive-tertiary-active: var(--primitive-color-brand-accent-900); /* Tertiary interactive active surface */
+  --semantic-color-interactive-tertiary-disabled: var(--primitive-color-neutral-gray-50); /* Tertiary interactive disabled surface */
+  --semantic-color-interactive-tertiary-text: var(--primitive-color-brand-primary-800); /* Text color on tertiary interactive surfaces */
+  --semantic-color-interactive-tertiary-text-disabled: var(--primitive-color-neutral-gray-400); /* Disabled text color on tertiary interactive surfaces */
+  --semantic-color-interactive-destructive-default: var(--primitive-color-feedback-error-500); /* Destructive interactive default surface */
+  --semantic-color-interactive-destructive-hover: var(--primitive-color-feedback-error-600); /* Destructive interactive hover surface */
+  --semantic-color-interactive-destructive-active: var(--primitive-color-feedback-error-700); /* Destructive interactive active surface */
+  --semantic-color-interactive-destructive-disabled: var(--primitive-color-neutral-gray-50); /* Destructive interactive disabled surface */
+  --semantic-color-interactive-destructive-text: var(--primitive-color-feedback-error-50); /* Text color on destructive interactive surfaces */
+  --semantic-color-interactive-destructive-text-disabled: var(--primitive-color-neutral-gray-400); /* Disabled text color on destructive interactive surfaces */
+  --semantic-color-interactive-link-default: var(--primitive-color-brand-primary-600); /* Link default text color */
+  --semantic-color-interactive-link-hover: var(--primitive-color-brand-primary-800); /* Link hover text color */
+  --semantic-color-interactive-link-active: var(--primitive-color-brand-primary-900); /* Link active/pressed text color */
+  --semantic-color-interactive-link-disabled: var(--primitive-color-neutral-gray-400); /* Link disabled text color */
+  --semantic-typography-display-lg-font-family: var(--primitive-typography-family-display);
+  --semantic-typography-display-lg-font-size: var(--primitive-typography-size-7xl);
+  --semantic-typography-display-lg-description: Hero sections, landing pages;
+  --semantic-typography-display-md-font-family: var(--primitive-typography-family-display);
+  --semantic-typography-display-md-font-size: var(--primitive-typography-size-6xl);
+  --semantic-typography-display-md-description: Large hero text;
+  --semantic-typography-display-sm-font-family: var(--primitive-typography-family-display);
+  --semantic-typography-display-sm-font-size: var(--primitive-typography-size-5xl);
+  --semantic-typography-display-sm-description: Small hero text;
+  --semantic-typography-heading-h1-font-family: var(--primitive-typography-family-heading);
+  --semantic-typography-heading-h1-font-size: var(--primitive-typography-size-6xl);
+  --semantic-typography-heading-h1-description: Page titles;
+  --semantic-typography-heading-h2-font-family: var(--primitive-typography-family-heading);
+  --semantic-typography-heading-h2-font-size: var(--primitive-typography-size-4xl);
+  --semantic-typography-heading-h2-description: Section titles;
+  --semantic-typography-heading-h2-font-weight: var(--primitive-typography-weight-semibold);
+  --semantic-typography-heading-h3-font-family: var(--primitive-typography-family-heading);
+  --semantic-typography-heading-h3-font-size: var(--primitive-typography-size-2xl);
+  --semantic-typography-heading-h3-description: Subsection titles;
+  --semantic-typography-heading-h3-font-weight: var(--primitive-typography-weight-medium);
+  --semantic-typography-heading-h3-line-height: var(--primitive-typography-line-height-tight);
+  --semantic-typography-heading-h3-letter-spacing: var(--primitive-typography-letter-spacing-normal);
+  --semantic-typography-heading-h4-font-family: var(--primitive-typography-family-heading);
+  --semantic-typography-heading-h4-font-size: var(--primitive-typography-size-xl);
+  --semantic-typography-heading-h4-description: Card titles;
+  --semantic-typography-heading-h4-font-weight: var(--primitive-typography-weight-bold);
+  --semantic-typography-heading-h4-line-height: var(--primitive-typography-line-height-tight);
+  --semantic-typography-heading-h4-letter-spacing: var(--primitive-typography-letter-spacing-normal);
+  --semantic-typography-heading-h4-text-transform: var(--primitive-typography-text-transform-none);
+  --semantic-typography-heading-h5-font-family: var(--primitive-typography-family-heading);
+  --semantic-typography-heading-h5-font-size: var(--primitive-typography-size-lg);
+  --semantic-typography-heading-h5-description: Small headings;
+  --semantic-typography-heading-h5-font-weight: var(--primitive-typography-weight-semibold);
+  --semantic-typography-heading-h5-line-height: var(--primitive-typography-line-height-tight);
+  --semantic-typography-heading-h5-letter-spacing: var(--primitive-typography-letter-spacing-normal);
+  --semantic-typography-heading-h5-text-transform: var(--primitive-typography-text-transform-none);
+  --semantic-typography-heading-h6-font-family: var(--primitive-typography-family-heading);
+  --semantic-typography-heading-h6-font-size: var(--primitive-typography-size-base);
+  --semantic-typography-heading-h6-description: Smallest headings;
+  --semantic-typography-heading-h6-font-weight: var(--primitive-typography-weight-bold);
+  --semantic-typography-heading-h6-line-height: var(--primitive-typography-line-height-tight);
+  --semantic-typography-heading-h6-letter-spacing: var(--primitive-typography-letter-spacing-normal);
+  --semantic-typography-heading-h6-text-transform: var(--primitive-typography-text-transform-none);
+  --semantic-typography-body-lg-font-family: var(--primitive-typography-family-body);
+  --semantic-typography-body-lg-font-size: var(--primitive-typography-size-lg);
+  --semantic-typography-body-lg-description: Large body text, introductions;
+  --semantic-typography-body-lg-bold-font-family: var(--primitive-typography-family-body);
+  --semantic-typography-body-lg-bold-font-size: var(--primitive-typography-size-lg);
+  --semantic-typography-body-lg-bold-description: Bold large text;
+  --semantic-typography-body-lg-bold-font-weight: var(--primitive-typography-weight-normal);
+  --semantic-typography-body-lg-bold-letter-spacing: var(--primitive-typography-letter-spacing-normal);
+  --semantic-typography-body-lg-bold-text-transform: var(--primitive-typography-text-transform-none);
+  --semantic-typography-body-md-font-family: var(--primitive-typography-family-body);
+  --semantic-typography-body-md-font-size: var(--primitive-typography-size-base);
+  --semantic-typography-body-md-description: Standard body text;
+  --semantic-typography-body-md-font-weight: var(--primitive-typography-weight-normal);
+  --semantic-typography-body-md-line-height: var(--primitive-typography-line-height-normal);
+  --semantic-typography-body-md-letter-spacing: var(--primitive-typography-letter-spacing-normal);
+  --semantic-typography-body-md-text-transform: var(--primitive-typography-text-transform-none);
+  --semantic-typography-body-md-bold-font-family: var(--primitive-typography-family-body);
+  --semantic-typography-body-md-bold-font-size: var(--primitive-typography-size-base);
+  --semantic-typography-body-md-bold-description: Bold body text;
+  --semantic-typography-body-md-bold-font-weight: var(--primitive-typography-weight-semibold);
+  --semantic-typography-body-md-bold-line-height: var(--primitive-typography-line-height-normal);
+  --semantic-typography-body-md-bold-letter-spacing: var(--primitive-typography-letter-spacing-normal);
+  --semantic-typography-body-md-bold-text-transform: var(--primitive-typography-text-transform-none);
+  --semantic-typography-body-sm-font-family: var(--primitive-typography-family-body);
+  --semantic-typography-body-sm-font-size: var(--primitive-typography-size-sm);
+  --semantic-typography-body-sm-description: Small body text;
+  --semantic-typography-body-sm-font-weight: var(--primitive-typography-weight-normal);
+  --semantic-typography-body-sm-line-height: var(--primitive-typography-line-height-normal);
+  --semantic-typography-body-sm-letter-spacing: var(--primitive-typography-letter-spacing-normal);
+  --semantic-typography-body-sm-text-transform: var(--primitive-typography-text-transform-none);
+  --semantic-typography-body-sm-bold-font-family: var(--primitive-typography-family-body);
+  --semantic-typography-body-sm-bold-font-size: var(--primitive-typography-size-sm);
+  --semantic-typography-body-sm-bold-description: Bold small text;
+  --semantic-typography-body-sm-bold-font-weight: var(--primitive-typography-weight-semibold);
+  --semantic-typography-body-sm-bold-line-height: var(--primitive-typography-line-height-normal);
+  --semantic-typography-body-sm-bold-letter-spacing: var(--primitive-typography-letter-spacing-normal);
+  --semantic-typography-body-sm-bold-text-transform: var(--primitive-typography-text-transform-none);
+  --semantic-typography-body-xs-font-family: var(--primitive-typography-family-body);
+  --semantic-typography-body-xs-font-size: var(--primitive-typography-size-xs);
+  --semantic-typography-body-xs-description: Extra small body text;
+  --semantic-typography-body-xs-font-weight: var(--primitive-typography-weight-medium);
+  --semantic-typography-body-xs-line-height: var(--primitive-typography-line-height-normal);
+  --semantic-typography-body-xs-letter-spacing: var(--primitive-typography-letter-spacing-normal);
+  --semantic-typography-body-xs-text-transform: var(--primitive-typography-text-transform-none);
+  --semantic-typography-label-lg-font-family: var(--primitive-typography-family-body);
+  --semantic-typography-label-lg-font-size: var(--primitive-typography-size-lg);
+  --semantic-typography-label-lg-description: Form labels, buttons;
+  --semantic-typography-label-lg-font-weight: var(--primitive-typography-weight-normal);
+  --semantic-typography-label-lg-line-height: var(--primitive-typography-line-height-normal);
+  --semantic-typography-label-lg-letter-spacing: var(--primitive-typography-letter-spacing-normal);
+  --semantic-typography-label-lg-text-transform: var(--primitive-typography-text-transform-none);
+  --semantic-typography-label-md-font-family: var(--primitive-typography-family-body);
+  --semantic-typography-label-md-font-size: var(--primitive-typography-size-base);
+  --semantic-typography-label-md-description: Standard labels;
+  --semantic-typography-label-md-font-weight: var(--primitive-typography-weight-normal);
+  --semantic-typography-label-md-line-height: var(--primitive-typography-line-height-normal);
+  --semantic-typography-label-md-letter-spacing: var(--primitive-typography-letter-spacing-normal);
+  --semantic-typography-label-md-text-transform: var(--primitive-typography-text-transform-none);
+  --semantic-typography-label-sm-font-family: var(--primitive-typography-family-body);
+  --semantic-typography-label-sm-font-size: var(--primitive-typography-size-sm);
+  --semantic-typography-label-sm-description: Small labels, tags;
+  --semantic-typography-label-sm-font-weight: var(--primitive-typography-weight-normal);
+  --semantic-typography-label-sm-line-height: var(--primitive-typography-line-height-normal);
+  --semantic-typography-label-sm-letter-spacing: var(--primitive-typography-letter-spacing-normal);
+  --semantic-typography-label-sm-text-transform: var(--primitive-typography-text-transform-none);
+  --semantic-typography-label-uppercase-font-family: var(--primitive-typography-family-body);
+  --semantic-typography-label-uppercase-font-size: var(--primitive-typography-size-xs);
+  --semantic-typography-label-uppercase-description: Uppercase labels, badges;
+  --semantic-typography-label-uppercase-font-weight: var(--primitive-typography-weight-normal);
+  --semantic-typography-label-uppercase-line-height: var(--primitive-typography-line-height-normal);
+  --semantic-typography-label-uppercase-letter-spacing: var(--primitive-typography-letter-spacing-normal);
+  --semantic-typography-label-uppercase-text-transform: var(--primitive-typography-text-transform-none);
+  --semantic-typography-label-xs-font-family: var(--primitive-typography-family-body);
+  --semantic-typography-label-xs-font-size: var(--primitive-typography-size-xs);
+  --semantic-typography-label-xs-description: Extra small labels, compact badges;
+  --semantic-typography-label-xs-font-weight: var(--primitive-typography-weight-normal);
+  --semantic-typography-label-xs-line-height: var(--primitive-typography-line-height-normal);
+  --semantic-typography-label-xs-letter-spacing: var(--primitive-typography-letter-spacing-normal);
+  --semantic-typography-label-xs-text-transform: var(--primitive-typography-text-transform-none);
+  --semantic-typography-caption-md-font-family: var(--primitive-typography-family-body);
+  --semantic-typography-caption-md-font-size: var(--primitive-typography-size-sm);
+  --semantic-typography-caption-md-description: Captions, helper text;
+  --semantic-typography-caption-md-font-weight: var(--primitive-typography-weight-normal);
+  --semantic-typography-caption-md-line-height: var(--primitive-typography-line-height-normal);
+  --semantic-typography-caption-md-letter-spacing: var(--primitive-typography-letter-spacing-normal);
+  --semantic-typography-caption-md-text-transform: var(--primitive-typography-text-transform-none);
+  --semantic-typography-caption-sm-font-family: var(--primitive-typography-family-body);
+  --semantic-typography-caption-sm-font-size: var(--primitive-typography-size-xs);
+  --semantic-typography-caption-sm-description: Small captions, footnotes;
+  --semantic-typography-caption-sm-font-weight: var(--primitive-typography-weight-normal);
+  --semantic-typography-caption-sm-line-height: var(--primitive-typography-line-height-normal);
+  --semantic-typography-caption-sm-letter-spacing: var(--primitive-typography-letter-spacing-normal);
+  --semantic-typography-caption-sm-text-transform: var(--primitive-typography-text-transform-none);
+  --semantic-typography-code-block-font-family: var(--primitive-typography-family-mono);
+  --semantic-typography-code-block-font-size: var(--primitive-typography-size-xs);
+  --semantic-typography-code-block-description: Code blocks;
+  --semantic-typography-code-block-font-weight: var(--primitive-typography-weight-normal);
+  --semantic-typography-code-block-line-height: var(--primitive-typography-line-height-tight);
+  --semantic-typography-code-block-letter-spacing: var(--primitive-typography-letter-spacing-tight);
+  --semantic-typography-code-block-text-transform: var(--primitive-typography-text-transform-none);
+  --semantic-typography-code-inline-font-family: var(--primitive-typography-family-mono);
+  --semantic-typography-code-inline-font-size: var(--primitive-typography-size-sm);
+  --semantic-typography-code-inline-description: Inline code;
+  --semantic-typography-code-inline-font-weight: var(--primitive-typography-weight-light);
+  --semantic-typography-code-inline-line-height: var(--primitive-typography-line-height-tight);
+  --semantic-typography-code-inline-letter-spacing: var(--primitive-typography-letter-spacing-tight);
+  --semantic-typography-code-inline-text-transform: var(--primitive-typography-text-transform-none);
+  --semantic-typography-overline-md-font-family: var(--primitive-typography-family-body);
+  --semantic-typography-overline-md-font-size: var(--primitive-typography-size-sm);
+  --semantic-typography-overline-md-description: Section labels;
+  --semantic-typography-overline-md-font-weight: var(--primitive-typography-weight-normal);
+  --semantic-typography-overline-md-line-height: var(--primitive-typography-line-height-normal);
+  --semantic-typography-overline-md-letter-spacing: var(--primitive-typography-letter-spacing-normal);
+  --semantic-typography-overline-md-text-transform: var(--primitive-typography-text-transform-uppercase);
+  --semantic-typography-overline-sm-font-family: var(--primitive-typography-family-body);
+  --semantic-typography-overline-sm-font-size: var(--primitive-typography-size-xs);
+  --semantic-typography-overline-sm-description: Small section labels;
+  --semantic-typography-overline-sm-font-weight: var(--primitive-typography-weight-normal);
+  --semantic-typography-overline-sm-line-height: var(--primitive-typography-line-height-normal);
+  --semantic-typography-overline-sm-letter-spacing: var(--primitive-typography-letter-spacing-normal);
+  --semantic-typography-overline-sm-text-transform: var(--primitive-typography-text-transform-uppercase);
+  --semantic-spacing-stack-lg: var(--primitive-spacing-2xl); /* Generous vertical spacing */
+  --semantic-spacing-stack-lg-value: var(--primitive-spacing-2xl); /* Generous vertical spacing */
+  --semantic-spacing-stack-md: var(--primitive-spacing-xl); /* Standard vertical spacing */
+  --semantic-spacing-stack-md-value: var(--primitive-spacing-xl); /* Standard vertical spacing */
+  --semantic-spacing-stack-sm: var(--primitive-spacing-lg); /* Compact vertical spacing */
+  --semantic-spacing-stack-sm-value: var(--primitive-spacing-lg); /* Compact vertical spacing */
+  --semantic-spacing-stack-xl: var(--primitive-spacing-4xl); /* Wide vertical spacing */
+  --semantic-spacing-stack-xl-value: var(--primitive-spacing-4xl); /* Wide vertical spacing */
+  --semantic-spacing-stack-xs: var(--primitive-spacing-sm); /* Tight vertical spacing between elements */
+  --semantic-spacing-stack-xs-value: var(--primitive-spacing-sm); /* Tight vertical spacing between elements */
+  --semantic-spacing-inset-lg: var(--primitive-spacing-4xl); /* Generous inset padding */
+  --semantic-spacing-inset-lg-value: var(--primitive-spacing-4xl); /* Generous inset padding */
+  --semantic-spacing-inset-md: var(--primitive-spacing-2xl); /* Standard inset padding */
+  --semantic-spacing-inset-md-value: var(--primitive-spacing-2xl); /* Standard inset padding */
+  --semantic-spacing-inset-sm: var(--primitive-spacing-lg); /* Compact inset padding */
+  --semantic-spacing-inset-sm-value: var(--primitive-spacing-lg); /* Compact inset padding */
+  --semantic-spacing-inset-xl: var(--primitive-spacing-5xl); /* Wide inset padding */
+  --semantic-spacing-inset-xl-value: var(--primitive-spacing-5xl); /* Wide inset padding */
+  --semantic-spacing-inset-xs: var(--primitive-spacing-sm); /* Minimal padding for compact elements */
+  --semantic-spacing-inset-xs-value: var(--primitive-spacing-sm); /* Minimal padding for compact elements */
+  --semantic-spacing-inline-lg: var(--primitive-spacing-2xl); /* Generous horizontal spacing */
+  --semantic-spacing-inline-lg-value: var(--primitive-spacing-2xl); /* Generous horizontal spacing */
+  --semantic-spacing-inline-md: var(--primitive-spacing-xl); /* Standard horizontal spacing */
+  --semantic-spacing-inline-md-value: var(--primitive-spacing-xl); /* Standard horizontal spacing */
+  --semantic-spacing-inline-sm: var(--primitive-spacing-lg); /* Compact horizontal spacing */
+  --semantic-spacing-inline-sm-value: var(--primitive-spacing-lg); /* Compact horizontal spacing */
+  --semantic-spacing-inline-xl: var(--primitive-spacing-3xl); /* Wide horizontal spacing */
+  --semantic-spacing-inline-xl-value: var(--primitive-spacing-3xl); /* Wide horizontal spacing */
+  --semantic-spacing-inline-xs: var(--primitive-spacing-md); /* Tight horizontal spacing between elements */
+  --semantic-spacing-inline-xs-value: var(--primitive-spacing-md); /* Tight horizontal spacing between elements */
+  --semantic-transition-base: var(--primitive-duration-base) var(--primitive-easing-standard); /* Default transition for most interactions */
+  --semantic-transition-base-easing: var(--primitive-easing-standard);
+  --semantic-transition-base-duration: var(--primitive-duration-base);
+  --semantic-transition-fast: var(--primitive-duration-fast) var(--primitive-easing-standard); /* Quick transitions for micro-interactions */
+  --semantic-transition-fast-easing: var(--primitive-easing-standard);
+  --semantic-transition-fast-duration: var(--primitive-duration-fast);
+  --semantic-transition-slow: var(--primitive-duration-slow) var(--primitive-easing-standard); /* Slow transitions for large UI changes */
+  --semantic-transition-slow-easing: var(--primitive-easing-standard);
+  --semantic-transition-slow-duration: var(--primitive-duration-slow);
+  --semantic-transition-color: var(--primitive-duration-base) var(--primitive-easing-ease); /* Smooth color transitions for hover states */
+  --semantic-transition-color-easing: var(--primitive-easing-ease);
+  --semantic-transition-color-duration: var(--primitive-duration-base);
+  --semantic-focus-outlinewidth: var(--primitive-border-width-thin);
+  --semantic-focus-outlineoffset: var(--primitive-spacing-xs);
+  --semantic-focus-outlinecolor: var(--primitive-color-brand-primary-500);
+  --semantic-focus-ringwidth: var(--primitive-border-width-thin);
+  --semantic-focus-ringcolor: var(--primitive-color-brand-primary-500);
+  --semantic-focus-ringopacity: var(--primitive-opacity-alpha-50);
+
+}
+
+/* ============================================
+   SEMANTIC LAYER - DARK THEME
+   Same token names, different primitive refs
+   ============================================ */
+[data-theme="dark"] {
+  --semantic-color-text-neutral-subtle: var(--primitive-color-neutral-gray-600); /* Captions, hints, placeholder text */
+  --semantic-color-text-neutral-default: var(--primitive-color-neutral-gray-400); /* Body text, standard UI text */
+  --semantic-color-text-neutral-bold: var(--primitive-color-neutral-gray-50); /* Emphasized body text, strong labels */
+  --semantic-color-text-neutral-contrast: var(--primitive-color-neutral-gray-900); /* Text on dark/bold neutral surfaces */
+  --semantic-color-text-primary-subtle: var(--primitive-color-brand-primary-600); /* De-emphasized brand text, hints */
+  --semantic-color-text-primary-default: var(--primitive-color-brand-primary-400); /* Headlines, emphasis, primary brand expression */
+  --semantic-color-text-primary-bold: var(--primitive-color-brand-primary-100); /* Maximum emphasis brand text */
+  --semantic-color-text-primary-contrast: var(--primitive-color-brand-primary-900); /* Brand text on bold primary surfaces */
+  --semantic-color-text-secondary-subtle: var(--primitive-color-brand-secondary-600); /* De-emphasized secondary text */
+  --semantic-color-text-secondary-default: var(--primitive-color-brand-secondary-400); /* Subheaders, supporting hierarchy */
+  --semantic-color-text-secondary-bold: var(--primitive-color-brand-secondary-100); /* Emphasized secondary text */
+  --semantic-color-text-secondary-contrast: var(--primitive-color-brand-secondary-900); /* Secondary text on bold secondary surfaces */
+  --semantic-color-text-accent-subtle: var(--primitive-color-brand-accent-600); /* De-emphasized accent text */
+  --semantic-color-text-accent-default: var(--primitive-color-brand-accent-400); /* Highlights, decorative emphasis */
+  --semantic-color-text-accent-bold: var(--primitive-color-brand-accent-100); /* Strong accent text */
+  --semantic-color-text-accent-contrast: var(--primitive-color-brand-accent-900); /* Accent text on bold accent surfaces */
+  --semantic-color-text-success-subtle: var(--primitive-color-feedback-success-600); /* De-emphasized success text */
+  --semantic-color-text-success-default: var(--primitive-color-feedback-success-400); /* Success messages, confirmations */
+  --semantic-color-text-success-bold: var(--primitive-color-feedback-success-100); /* Emphasized success text */
+  --semantic-color-text-success-contrast: var(--primitive-color-feedback-success-900); /* Text on bold success surfaces */
+  --semantic-color-text-warning-subtle: var(--primitive-color-feedback-warning-600); /* De-emphasized warning text */
+  --semantic-color-text-warning-default: var(--primitive-color-feedback-warning-400); /* Warning messages, cautions */
+  --semantic-color-text-warning-bold: var(--primitive-color-feedback-warning-100); /* Emphasized warning text */
+  --semantic-color-text-warning-contrast: var(--primitive-color-feedback-warning-900); /* Text on bold warning surfaces */
+  --semantic-color-text-error-subtle: var(--primitive-color-feedback-error-600); /* De-emphasized error text */
+  --semantic-color-text-error-default: var(--primitive-color-feedback-error-400); /* Error messages, validation */
+  --semantic-color-text-error-bold: var(--primitive-color-feedback-error-100); /* Emphasized error text */
+  --semantic-color-text-error-contrast: var(--primitive-color-feedback-error-900); /* Text on bold error surfaces */
+  --semantic-color-text-info-subtle: var(--primitive-color-feedback-info-600); /* De-emphasized info text */
+  --semantic-color-text-info-default: var(--primitive-color-feedback-info-400); /* Informational messages, tips */
+  --semantic-color-text-info-bold: var(--primitive-color-feedback-info-100); /* Emphasized info text */
+  --semantic-color-text-info-contrast: var(--primitive-color-feedback-info-900); /* Text on bold info surfaces */
+  --semantic-color-text-disabled: var(--primitive-color-neutral-gray-500); /* Text color for disabled elements */
+  --semantic-color-surface-neutral-subtle: var(--primitive-color-neutral-gray-800); /* Page canvas, recessed areas */
+  --semantic-color-surface-neutral-default: var(--primitive-color-neutral-gray-700); /* Cards, containers, panels */
+  --semantic-color-surface-neutral-bold: var(--primitive-color-neutral-gray-300); /* Inverted surfaces, dark callouts */
+  --semantic-color-surface-primary-subtle: var(--primitive-color-brand-primary-900); /* Light brand tint, card backgrounds */
+  --semantic-color-surface-primary-default: var(--primitive-color-brand-primary-800); /* Medium brand surface, hover states */
+  --semantic-color-surface-primary-bold: var(--primitive-color-brand-primary-300); /* Strong brand surface, filled badges, callouts */
+  --semantic-color-surface-secondary-subtle: var(--primitive-color-brand-secondary-900); /* Light secondary tint */
+  --semantic-color-surface-secondary-default: var(--primitive-color-brand-secondary-800); /* Medium secondary surface */
+  --semantic-color-surface-secondary-bold: var(--primitive-color-brand-secondary-300); /* Strong secondary surface */
+  --semantic-color-surface-accent-subtle: var(--primitive-color-brand-accent-900); /* Light accent tint */
+  --semantic-color-surface-accent-default: var(--primitive-color-brand-accent-800); /* Medium accent surface */
+  --semantic-color-surface-accent-bold: var(--primitive-color-brand-accent-300); /* Strong accent surface */
+  --semantic-color-surface-success-subtle: var(--primitive-color-feedback-success-900); /* Success backgrounds, banners */
+  --semantic-color-surface-success-default: var(--primitive-color-feedback-success-800); /* Medium success surface */
+  --semantic-color-surface-success-bold: var(--primitive-color-feedback-success-300); /* Strong success surface, filled badges */
+  --semantic-color-surface-warning-subtle: var(--primitive-color-feedback-warning-900); /* Warning backgrounds, banners */
+  --semantic-color-surface-warning-default: var(--primitive-color-feedback-warning-800); /* Medium warning surface */
+  --semantic-color-surface-warning-bold: var(--primitive-color-feedback-warning-300); /* Strong warning surface, filled badges */
+  --semantic-color-surface-error-subtle: var(--primitive-color-feedback-error-900); /* Error backgrounds, banners */
+  --semantic-color-surface-error-default: var(--primitive-color-feedback-error-800); /* Medium error surface */
+  --semantic-color-surface-error-bold: var(--primitive-color-feedback-error-300); /* Strong error surface, filled badges */
+  --semantic-color-surface-info-subtle: var(--primitive-color-feedback-info-900); /* Info backgrounds, banners */
+  --semantic-color-surface-info-default: var(--primitive-color-feedback-info-800); /* Medium info surface */
+  --semantic-color-surface-info-bold: var(--primitive-color-feedback-info-300); /* Strong info surface, filled badges */
+  --semantic-color-surface-disabled: var(--primitive-color-neutral-gray-800); /* Disabled surface background */
+  --semantic-color-border-neutral-subtle: var(--primitive-color-neutral-gray-800); /* Subtle dividers, card edges */
+  --semantic-color-border-neutral-default: var(--primitive-color-neutral-gray-600); /* Standard borders, input fields */
+  --semantic-color-border-neutral-bold: var(--primitive-color-neutral-gray-300); /* Strong borders, emphasis, active states */
+  --semantic-color-border-primary-subtle: var(--primitive-color-brand-primary-800); /* Light brand border, subtle dividers */
+  --semantic-color-border-primary-default: var(--primitive-color-brand-primary-500); /* Standard brand border, inputs on focus */
+  --semantic-color-border-primary-bold: var(--primitive-color-brand-primary-300); /* Strong brand border, emphasis */
+  --semantic-color-border-secondary-subtle: var(--primitive-color-brand-secondary-800); /* Light secondary border */
+  --semantic-color-border-secondary-default: var(--primitive-color-brand-secondary-500); /* Standard secondary border */
+  --semantic-color-border-secondary-bold: var(--primitive-color-brand-secondary-300); /* Strong secondary border */
+  --semantic-color-border-accent-subtle: var(--primitive-color-brand-accent-800); /* Light accent border */
+  --semantic-color-border-accent-default: var(--primitive-color-brand-accent-500); /* Standard accent border */
+  --semantic-color-border-accent-bold: var(--primitive-color-brand-accent-300); /* Strong accent border */
+  --semantic-color-border-success-subtle: var(--primitive-color-feedback-success-800); /* Light success border */
+  --semantic-color-border-success-default: var(--primitive-color-feedback-success-500); /* Success state borders, valid inputs */
+  --semantic-color-border-success-bold: var(--primitive-color-feedback-success-300); /* Strong success border */
+  --semantic-color-border-warning-subtle: var(--primitive-color-feedback-warning-800); /* Light warning border */
+  --semantic-color-border-warning-default: var(--primitive-color-feedback-warning-500); /* Warning state borders */
+  --semantic-color-border-warning-bold: var(--primitive-color-feedback-warning-300); /* Strong warning border */
+  --semantic-color-border-error-subtle: var(--primitive-color-feedback-error-800); /* Light error border */
+  --semantic-color-border-error-default: var(--primitive-color-feedback-error-500); /* Error state borders, invalid inputs */
+  --semantic-color-border-error-bold: var(--primitive-color-feedback-error-300); /* Strong error border */
+  --semantic-color-border-info-subtle: var(--primitive-color-feedback-info-800); /* Light info border */
+  --semantic-color-border-info-default: var(--primitive-color-feedback-info-500); /* Info state borders */
+  --semantic-color-border-info-bold: var(--primitive-color-feedback-info-300); /* Strong info border */
+  --semantic-color-border-disabled: var(--primitive-color-neutral-gray-700); /* Disabled border color */
+  --semantic-color-contrast-light: var(--primitive-color-neutral-gray-black);
+  --semantic-color-contrast-dark: var(--primitive-color-neutral-gray-white);
+  --semantic-color-interactive-primary-default: var(--primitive-color-brand-primary-400); /* Primary interactive default surface */
+  --semantic-color-interactive-primary-hover: var(--primitive-color-brand-primary-300); /* Primary interactive hover surface */
+  --semantic-color-interactive-primary-active: var(--primitive-color-brand-primary-200); /* Primary interactive active surface */
+  --semantic-color-interactive-primary-disabled: var(--primitive-color-neutral-gray-700); /* Primary interactive disabled surface */
+  --semantic-color-interactive-primary-text: var(--primitive-color-brand-primary-950); /* Text color on primary interactive surfaces */
+  --semantic-color-interactive-primary-text-disabled: var(--primitive-color-neutral-gray-400); /* Disabled text color on primary interactive surfaces */
+  --semantic-color-interactive-secondary-default: var(--primitive-color-brand-secondary-300); /* Secondary interactive default surface */
+  --semantic-color-interactive-secondary-hover: var(--primitive-color-brand-secondary-400); /* Secondary interactive hover surface */
+  --semantic-color-interactive-secondary-active: var(--primitive-color-brand-secondary-500); /* Secondary interactive active surface */
+  --semantic-color-interactive-secondary-disabled: var(--primitive-color-neutral-gray-600); /* Secondary interactive disabled surface */
+  --semantic-color-interactive-secondary-text: var(--primitive-color-brand-primary-100); /* Text color on secondary interactive surfaces */
+  --semantic-color-interactive-secondary-text-disabled: var(--primitive-color-neutral-gray-600); /* Disabled text color on secondary interactive surfaces */
+  --semantic-color-interactive-tertiary-default: var(--primitive-color-neutral-gray-300); /* Tertiary interactive default surface */
+  --semantic-color-interactive-tertiary-hover: var(--primitive-color-neutral-gray-400); /* Tertiary interactive hover surface */
+  --semantic-color-interactive-tertiary-active: var(--primitive-color-neutral-gray-500); /* Tertiary interactive active surface */
+  --semantic-color-interactive-tertiary-disabled: var(--primitive-color-neutral-gray-700); /* Tertiary interactive disabled surface */
+  --semantic-color-interactive-tertiary-text: var(--primitive-color-brand-primary-100); /* Text color on tertiary interactive surfaces */
+  --semantic-color-interactive-tertiary-text-disabled: var(--primitive-color-neutral-gray-600); /* Disabled text color on tertiary interactive surfaces */
+  --semantic-color-interactive-destructive-default: var(--primitive-color-feedback-error-400); /* Destructive interactive default surface */
+  --semantic-color-interactive-destructive-hover: var(--primitive-color-feedback-error-500); /* Destructive interactive hover surface */
+  --semantic-color-interactive-destructive-active: var(--primitive-color-feedback-error-600); /* Destructive interactive active surface */
+  --semantic-color-interactive-destructive-disabled: var(--primitive-color-neutral-gray-700); /* Destructive interactive disabled surface */
+  --semantic-color-interactive-destructive-text: var(--primitive-color-feedback-error-950); /* Text color on destructive interactive surfaces */
+  --semantic-color-interactive-destructive-text-disabled: var(--primitive-color-neutral-gray-600); /* Disabled text color on destructive interactive surfaces */
+  --semantic-color-interactive-link-default: var(--primitive-color-brand-primary-300); /* Link default text color */
+  --semantic-color-interactive-link-hover: var(--primitive-color-brand-primary-400); /* Link hover text color */
+  --semantic-color-interactive-link-active: var(--primitive-color-brand-primary-500); /* Link active/pressed text color */
+  --semantic-color-interactive-link-disabled: var(--primitive-color-neutral-gray-600); /* Link disabled text color */
+  --semantic-typography-display-lg-font-family: var(--primitive-typography-family-display);
+  --semantic-typography-display-lg-font-size: var(--primitive-typography-size-7xl);
+  --semantic-typography-display-lg-description: Hero sections, landing pages;
+  --semantic-typography-display-md-font-family: var(--primitive-typography-family-display);
+  --semantic-typography-display-md-font-size: var(--primitive-typography-size-6xl);
+  --semantic-typography-display-md-description: Large hero text;
+  --semantic-typography-display-sm-font-family: var(--primitive-typography-family-display);
+  --semantic-typography-display-sm-font-size: var(--primitive-typography-size-5xl);
+  --semantic-typography-display-sm-description: Small hero text;
+  --semantic-typography-heading-h1-font-family: var(--primitive-typography-family-heading);
+  --semantic-typography-heading-h1-font-size: var(--primitive-typography-size-6xl);
+  --semantic-typography-heading-h1-description: Page titles;
+  --semantic-typography-heading-h2-font-family: var(--primitive-typography-family-heading);
+  --semantic-typography-heading-h2-font-size: var(--primitive-typography-size-4xl);
+  --semantic-typography-heading-h2-description: Section titles;
+  --semantic-typography-heading-h2-font-weight: var(--primitive-typography-weight-semibold);
+  --semantic-typography-heading-h3-font-family: var(--primitive-typography-family-heading);
+  --semantic-typography-heading-h3-font-size: var(--primitive-typography-size-2xl);
+  --semantic-typography-heading-h3-description: Subsection titles;
+  --semantic-typography-heading-h3-font-weight: var(--primitive-typography-weight-medium);
+  --semantic-typography-heading-h3-line-height: var(--primitive-typography-line-height-tight);
+  --semantic-typography-heading-h3-letter-spacing: var(--primitive-typography-letter-spacing-normal);
+  --semantic-typography-heading-h4-font-family: var(--primitive-typography-family-heading);
+  --semantic-typography-heading-h4-font-size: var(--primitive-typography-size-xl);
+  --semantic-typography-heading-h4-description: Card titles;
+  --semantic-typography-heading-h4-font-weight: var(--primitive-typography-weight-bold);
+  --semantic-typography-heading-h4-line-height: var(--primitive-typography-line-height-tight);
+  --semantic-typography-heading-h4-letter-spacing: var(--primitive-typography-letter-spacing-normal);
+  --semantic-typography-heading-h4-text-transform: var(--primitive-typography-text-transform-none);
+  --semantic-typography-heading-h5-font-family: var(--primitive-typography-family-heading);
+  --semantic-typography-heading-h5-font-size: var(--primitive-typography-size-lg);
+  --semantic-typography-heading-h5-description: Small headings;
+  --semantic-typography-heading-h5-font-weight: var(--primitive-typography-weight-semibold);
+  --semantic-typography-heading-h5-line-height: var(--primitive-typography-line-height-tight);
+  --semantic-typography-heading-h5-letter-spacing: var(--primitive-typography-letter-spacing-normal);
+  --semantic-typography-heading-h5-text-transform: var(--primitive-typography-text-transform-none);
+  --semantic-typography-heading-h6-font-family: var(--primitive-typography-family-heading);
+  --semantic-typography-heading-h6-font-size: var(--primitive-typography-size-base);
+  --semantic-typography-heading-h6-description: Smallest headings;
+  --semantic-typography-heading-h6-font-weight: var(--primitive-typography-weight-bold);
+  --semantic-typography-heading-h6-line-height: var(--primitive-typography-line-height-tight);
+  --semantic-typography-heading-h6-letter-spacing: var(--primitive-typography-letter-spacing-normal);
+  --semantic-typography-heading-h6-text-transform: var(--primitive-typography-text-transform-none);
+  --semantic-typography-body-lg-font-family: var(--primitive-typography-family-body);
+  --semantic-typography-body-lg-font-size: var(--primitive-typography-size-lg);
+  --semantic-typography-body-lg-description: Large body text, introductions;
+  --semantic-typography-body-lg-bold-font-family: var(--primitive-typography-family-body);
+  --semantic-typography-body-lg-bold-font-size: var(--primitive-typography-size-lg);
+  --semantic-typography-body-lg-bold-description: Bold large text;
+  --semantic-typography-body-lg-bold-font-weight: var(--primitive-typography-weight-normal);
+  --semantic-typography-body-lg-bold-letter-spacing: var(--primitive-typography-letter-spacing-normal);
+  --semantic-typography-body-lg-bold-text-transform: var(--primitive-typography-text-transform-none);
+  --semantic-typography-body-md-font-family: var(--primitive-typography-family-body);
+  --semantic-typography-body-md-font-size: var(--primitive-typography-size-base);
+  --semantic-typography-body-md-description: Standard body text;
+  --semantic-typography-body-md-font-weight: var(--primitive-typography-weight-normal);
+  --semantic-typography-body-md-line-height: var(--primitive-typography-line-height-normal);
+  --semantic-typography-body-md-letter-spacing: var(--primitive-typography-letter-spacing-normal);
+  --semantic-typography-body-md-text-transform: var(--primitive-typography-text-transform-none);
+  --semantic-typography-body-md-bold-font-family: var(--primitive-typography-family-body);
+  --semantic-typography-body-md-bold-font-size: var(--primitive-typography-size-base);
+  --semantic-typography-body-md-bold-description: Bold body text;
+  --semantic-typography-body-md-bold-font-weight: var(--primitive-typography-weight-semibold);
+  --semantic-typography-body-md-bold-line-height: var(--primitive-typography-line-height-normal);
+  --semantic-typography-body-md-bold-letter-spacing: var(--primitive-typography-letter-spacing-normal);
+  --semantic-typography-body-md-bold-text-transform: var(--primitive-typography-text-transform-none);
+  --semantic-typography-body-sm-font-family: var(--primitive-typography-family-body);
+  --semantic-typography-body-sm-font-size: var(--primitive-typography-size-sm);
+  --semantic-typography-body-sm-description: Small body text;
+  --semantic-typography-body-sm-font-weight: var(--primitive-typography-weight-normal);
+  --semantic-typography-body-sm-line-height: var(--primitive-typography-line-height-normal);
+  --semantic-typography-body-sm-letter-spacing: var(--primitive-typography-letter-spacing-normal);
+  --semantic-typography-body-sm-text-transform: var(--primitive-typography-text-transform-none);
+  --semantic-typography-body-sm-bold-font-family: var(--primitive-typography-family-body);
+  --semantic-typography-body-sm-bold-font-size: var(--primitive-typography-size-sm);
+  --semantic-typography-body-sm-bold-description: Bold small text;
+  --semantic-typography-body-sm-bold-font-weight: var(--primitive-typography-weight-semibold);
+  --semantic-typography-body-sm-bold-line-height: var(--primitive-typography-line-height-normal);
+  --semantic-typography-body-sm-bold-letter-spacing: var(--primitive-typography-letter-spacing-normal);
+  --semantic-typography-body-sm-bold-text-transform: var(--primitive-typography-text-transform-none);
+  --semantic-typography-body-xs-font-family: var(--primitive-typography-family-body);
+  --semantic-typography-body-xs-font-size: var(--primitive-typography-size-xs);
+  --semantic-typography-body-xs-description: Extra small body text;
+  --semantic-typography-body-xs-font-weight: var(--primitive-typography-weight-medium);
+  --semantic-typography-body-xs-line-height: var(--primitive-typography-line-height-normal);
+  --semantic-typography-body-xs-letter-spacing: var(--primitive-typography-letter-spacing-normal);
+  --semantic-typography-body-xs-text-transform: var(--primitive-typography-text-transform-none);
+  --semantic-typography-label-lg-font-family: var(--primitive-typography-family-body);
+  --semantic-typography-label-lg-font-size: var(--primitive-typography-size-lg);
+  --semantic-typography-label-lg-description: Form labels, buttons;
+  --semantic-typography-label-lg-font-weight: var(--primitive-typography-weight-normal);
+  --semantic-typography-label-lg-line-height: var(--primitive-typography-line-height-normal);
+  --semantic-typography-label-lg-letter-spacing: var(--primitive-typography-letter-spacing-normal);
+  --semantic-typography-label-lg-text-transform: var(--primitive-typography-text-transform-none);
+  --semantic-typography-label-md-font-family: var(--primitive-typography-family-body);
+  --semantic-typography-label-md-font-size: var(--primitive-typography-size-base);
+  --semantic-typography-label-md-description: Standard labels;
+  --semantic-typography-label-md-font-weight: var(--primitive-typography-weight-normal);
+  --semantic-typography-label-md-line-height: var(--primitive-typography-line-height-normal);
+  --semantic-typography-label-md-letter-spacing: var(--primitive-typography-letter-spacing-normal);
+  --semantic-typography-label-md-text-transform: var(--primitive-typography-text-transform-none);
+  --semantic-typography-label-sm-font-family: var(--primitive-typography-family-body);
+  --semantic-typography-label-sm-font-size: var(--primitive-typography-size-sm);
+  --semantic-typography-label-sm-description: Small labels, tags;
+  --semantic-typography-label-sm-font-weight: var(--primitive-typography-weight-normal);
+  --semantic-typography-label-sm-line-height: var(--primitive-typography-line-height-normal);
+  --semantic-typography-label-sm-letter-spacing: var(--primitive-typography-letter-spacing-normal);
+  --semantic-typography-label-sm-text-transform: var(--primitive-typography-text-transform-none);
+  --semantic-typography-label-uppercase-font-family: var(--primitive-typography-family-body);
+  --semantic-typography-label-uppercase-font-size: var(--primitive-typography-size-xs);
+  --semantic-typography-label-uppercase-description: Uppercase labels, badges;
+  --semantic-typography-label-uppercase-font-weight: var(--primitive-typography-weight-normal);
+  --semantic-typography-label-uppercase-line-height: var(--primitive-typography-line-height-normal);
+  --semantic-typography-label-uppercase-letter-spacing: var(--primitive-typography-letter-spacing-normal);
+  --semantic-typography-label-uppercase-text-transform: var(--primitive-typography-text-transform-none);
+  --semantic-typography-label-xs-font-family: var(--primitive-typography-family-body);
+  --semantic-typography-label-xs-font-size: var(--primitive-typography-size-xs);
+  --semantic-typography-label-xs-description: Extra small labels, compact badges;
+  --semantic-typography-label-xs-font-weight: var(--primitive-typography-weight-normal);
+  --semantic-typography-label-xs-line-height: var(--primitive-typography-line-height-normal);
+  --semantic-typography-label-xs-letter-spacing: var(--primitive-typography-letter-spacing-normal);
+  --semantic-typography-label-xs-text-transform: var(--primitive-typography-text-transform-none);
+  --semantic-typography-caption-md-font-family: var(--primitive-typography-family-body);
+  --semantic-typography-caption-md-font-size: var(--primitive-typography-size-sm);
+  --semantic-typography-caption-md-description: Captions, helper text;
+  --semantic-typography-caption-md-font-weight: var(--primitive-typography-weight-normal);
+  --semantic-typography-caption-md-line-height: var(--primitive-typography-line-height-normal);
+  --semantic-typography-caption-md-letter-spacing: var(--primitive-typography-letter-spacing-normal);
+  --semantic-typography-caption-md-text-transform: var(--primitive-typography-text-transform-none);
+  --semantic-typography-caption-sm-font-family: var(--primitive-typography-family-body);
+  --semantic-typography-caption-sm-font-size: var(--primitive-typography-size-xs);
+  --semantic-typography-caption-sm-description: Small captions, footnotes;
+  --semantic-typography-caption-sm-font-weight: var(--primitive-typography-weight-normal);
+  --semantic-typography-caption-sm-line-height: var(--primitive-typography-line-height-normal);
+  --semantic-typography-caption-sm-letter-spacing: var(--primitive-typography-letter-spacing-normal);
+  --semantic-typography-caption-sm-text-transform: var(--primitive-typography-text-transform-none);
+  --semantic-typography-code-block-font-family: var(--primitive-typography-family-mono);
+  --semantic-typography-code-block-font-size: var(--primitive-typography-size-xs);
+  --semantic-typography-code-block-description: Code blocks;
+  --semantic-typography-code-block-font-weight: var(--primitive-typography-weight-normal);
+  --semantic-typography-code-block-line-height: var(--primitive-typography-line-height-tight);
+  --semantic-typography-code-block-letter-spacing: var(--primitive-typography-letter-spacing-tight);
+  --semantic-typography-code-block-text-transform: var(--primitive-typography-text-transform-none);
+  --semantic-typography-code-inline-font-family: var(--primitive-typography-family-mono);
+  --semantic-typography-code-inline-font-size: var(--primitive-typography-size-sm);
+  --semantic-typography-code-inline-description: Inline code;
+  --semantic-typography-code-inline-font-weight: var(--primitive-typography-weight-light);
+  --semantic-typography-code-inline-line-height: var(--primitive-typography-line-height-tight);
+  --semantic-typography-code-inline-letter-spacing: var(--primitive-typography-letter-spacing-tight);
+  --semantic-typography-code-inline-text-transform: var(--primitive-typography-text-transform-none);
+  --semantic-typography-overline-md-font-family: var(--primitive-typography-family-body);
+  --semantic-typography-overline-md-font-size: var(--primitive-typography-size-sm);
+  --semantic-typography-overline-md-description: Section labels;
+  --semantic-typography-overline-md-font-weight: var(--primitive-typography-weight-normal);
+  --semantic-typography-overline-md-line-height: var(--primitive-typography-line-height-normal);
+  --semantic-typography-overline-md-letter-spacing: var(--primitive-typography-letter-spacing-normal);
+  --semantic-typography-overline-md-text-transform: var(--primitive-typography-text-transform-uppercase);
+  --semantic-typography-overline-sm-font-family: var(--primitive-typography-family-body);
+  --semantic-typography-overline-sm-font-size: var(--primitive-typography-size-xs);
+  --semantic-typography-overline-sm-description: Small section labels;
+  --semantic-typography-overline-sm-font-weight: var(--primitive-typography-weight-normal);
+  --semantic-typography-overline-sm-line-height: var(--primitive-typography-line-height-normal);
+  --semantic-typography-overline-sm-letter-spacing: var(--primitive-typography-letter-spacing-normal);
+  --semantic-typography-overline-sm-text-transform: var(--primitive-typography-text-transform-uppercase);
+  --semantic-spacing-stack-lg: var(--primitive-spacing-2xl); /* Generous vertical spacing */
+  --semantic-spacing-stack-lg-value: var(--primitive-spacing-2xl); /* Generous vertical spacing */
+  --semantic-spacing-stack-md: var(--primitive-spacing-xl); /* Standard vertical spacing */
+  --semantic-spacing-stack-md-value: var(--primitive-spacing-xl); /* Standard vertical spacing */
+  --semantic-spacing-stack-sm: var(--primitive-spacing-lg); /* Compact vertical spacing */
+  --semantic-spacing-stack-sm-value: var(--primitive-spacing-lg); /* Compact vertical spacing */
+  --semantic-spacing-stack-xl: var(--primitive-spacing-4xl); /* Wide vertical spacing */
+  --semantic-spacing-stack-xl-value: var(--primitive-spacing-4xl); /* Wide vertical spacing */
+  --semantic-spacing-stack-xs: var(--primitive-spacing-sm); /* Tight vertical spacing between elements */
+  --semantic-spacing-stack-xs-value: var(--primitive-spacing-sm); /* Tight vertical spacing between elements */
+  --semantic-spacing-inset-lg: var(--primitive-spacing-4xl); /* Generous inset padding */
+  --semantic-spacing-inset-lg-value: var(--primitive-spacing-4xl); /* Generous inset padding */
+  --semantic-spacing-inset-md: var(--primitive-spacing-2xl); /* Standard inset padding */
+  --semantic-spacing-inset-md-value: var(--primitive-spacing-2xl); /* Standard inset padding */
+  --semantic-spacing-inset-sm: var(--primitive-spacing-lg); /* Compact inset padding */
+  --semantic-spacing-inset-sm-value: var(--primitive-spacing-lg); /* Compact inset padding */
+  --semantic-spacing-inset-xl: var(--primitive-spacing-5xl); /* Wide inset padding */
+  --semantic-spacing-inset-xl-value: var(--primitive-spacing-5xl); /* Wide inset padding */
+  --semantic-spacing-inset-xs: var(--primitive-spacing-sm); /* Minimal padding for compact elements */
+  --semantic-spacing-inset-xs-value: var(--primitive-spacing-sm); /* Minimal padding for compact elements */
+  --semantic-spacing-inline-lg: var(--primitive-spacing-2xl); /* Generous horizontal spacing */
+  --semantic-spacing-inline-lg-value: var(--primitive-spacing-2xl); /* Generous horizontal spacing */
+  --semantic-spacing-inline-md: var(--primitive-spacing-xl); /* Standard horizontal spacing */
+  --semantic-spacing-inline-md-value: var(--primitive-spacing-xl); /* Standard horizontal spacing */
+  --semantic-spacing-inline-sm: var(--primitive-spacing-lg); /* Compact horizontal spacing */
+  --semantic-spacing-inline-sm-value: var(--primitive-spacing-lg); /* Compact horizontal spacing */
+  --semantic-spacing-inline-xl: var(--primitive-spacing-3xl); /* Wide horizontal spacing */
+  --semantic-spacing-inline-xl-value: var(--primitive-spacing-3xl); /* Wide horizontal spacing */
+  --semantic-spacing-inline-xs: var(--primitive-spacing-md); /* Tight horizontal spacing between elements */
+  --semantic-spacing-inline-xs-value: var(--primitive-spacing-md); /* Tight horizontal spacing between elements */
+  --semantic-transition-base: var(--primitive-duration-base) var(--primitive-easing-standard); /* Default transition for most interactions */
+  --semantic-transition-base-easing: var(--primitive-easing-standard);
+  --semantic-transition-base-duration: var(--primitive-duration-base);
+  --semantic-transition-fast: var(--primitive-duration-fast) var(--primitive-easing-standard); /* Quick transitions for micro-interactions */
+  --semantic-transition-fast-easing: var(--primitive-easing-standard);
+  --semantic-transition-fast-duration: var(--primitive-duration-fast);
+  --semantic-transition-slow: var(--primitive-duration-slow) var(--primitive-easing-standard); /* Slow transitions for large UI changes */
+  --semantic-transition-slow-easing: var(--primitive-easing-standard);
+  --semantic-transition-slow-duration: var(--primitive-duration-slow);
+  --semantic-transition-color: var(--primitive-duration-base) var(--primitive-easing-ease); /* Smooth color transitions for hover states */
+  --semantic-transition-color-easing: var(--primitive-easing-ease);
+  --semantic-transition-color-duration: var(--primitive-duration-base);
+  --semantic-focus-outlinewidth: var(--primitive-border-width-thin);
+  --semantic-focus-outlineoffset: var(--primitive-spacing-xs);
+  --semantic-focus-outlinecolor: var(--primitive-color-brand-primary-500);
+  --semantic-focus-ringwidth: var(--primitive-border-width-thin);
+  --semantic-focus-ringcolor: var(--primitive-color-brand-primary-500);
+  --semantic-focus-ringopacity: var(--primitive-opacity-alpha-50);
+
+}

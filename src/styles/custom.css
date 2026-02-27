@@ -1,0 +1,717 @@
+@import './tokens.css';
+
+/* ───────────────────────────────────────────
+   Typography
+   ─────────────────────────────────────────── */
+
+:root {
+  /* Fonts from design system */
+  --sl-font: var(--primitive-typography-family-body), -apple-system, BlinkMacSystemFont, sans-serif;
+  --sl-font-system: var(--primitive-typography-family-body), -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Heading sizes from design system */
+  --sl-text-h1: var(--primitive-typography-size-3xl);
+  --sl-text-h2: var(--semantic-typography-heading-h3-font-size);
+  --sl-text-h3: var(--semantic-typography-heading-h4-font-size);
+  --sl-line-height-headings: var(--primitive-typography-line-height-tight);
+
+  /* Body text */
+  --sl-text-body: var(--primitive-typography-size-base);
+  --sl-text-sm: var(--primitive-typography-size-sm);
+  --sl-text-xs: var(--primitive-typography-size-xs);
+
+  /* Colors from design system */
+  --sl-color-white: var(--semantic-color-text-neutral-bold);
+  --sl-color-text: var(--semantic-color-text-neutral-default);
+  --sl-color-text-accent: var(--semantic-color-text-neutral-bold);
+  --sl-color-bg: var(--semantic-color-surface-neutral-subtle);
+  --sl-color-bg-accent: var(--semantic-color-surface-primary-subtle);
+}
+
+/* ───────────────────────────────────────────
+   Whitespace & Layout
+   ─────────────────────────────────────────── */
+
+/* Wider content column */
+:root {
+  --sl-content-width: 80%;
+  --sl-sidebar-width: 17rem;
+}
+
+html, body {
+  overscroll-behavior: none !important;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+.sidebar-pane {
+  overscroll-behavior: contain;
+}
+
+/* Generous page padding */
+.main-pane {
+  padding-block: 3rem;
+  padding-inline: 3rem;
+}
+
+.content-panel {
+  padding: 0 0 1.5rem 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.sl-markdown-content hr:not(:where(.not-content *)) {
+  border: 0;
+  border-bottom: none;
+}
+
+/* More breathing room in the main content */
+.sl-markdown-content {
+  line-height: var(--primitive-typography-line-height-relaxed);
+  color: var(--semantic-color-text-neutral-default);
+}
+
+.sl-markdown-content > * + * {
+  margin-top: 1.75rem;
+}
+
+/* Headings: design system fonts + spacing */
+.sl-markdown-content :is(h1, h2, h3, h4, h5, h6):not(:where(.not-content *)) {
+  color: var(--semantic-color-text-neutral-bold);
+}
+
+h1#_top,
+.sl-markdown-content h1:not(:where(.not-content *)) {
+  font-family: var(--semantic-typography-heading-h1-font-family), sans-serif !important;
+  font-weight: 700;
+  min-height: calc(161px - 3rem);
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--semantic-color-border-neutral-bold);
+  margin-top: 0;
+}
+
+.sl-heading-wrapper.level-h2 {
+  border-top: 1px solid var(--semantic-color-border-neutral-bold);
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+}
+
+.sl-markdown-content h2:not(:where(.not-content *)) {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  padding-top: 0;
+  border-top: none;
+  font-family: var(--semantic-typography-heading-h2-font-family), sans-serif;
+  font-weight: var(--semantic-typography-heading-h2-font-weight);
+}
+
+.sl-markdown-content h3:not(:where(.not-content *)) {
+  margin-top: 3rem;
+  margin-bottom: 0.75rem;
+  font-family: var(--semantic-typography-heading-h3-font-family), sans-serif;
+  font-weight: 700;
+  font-size: var(--primitive-typography-size-base);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.sl-markdown-content .sl-heading-wrapper {
+  --sl-anchor-icon-size: -0.1750em;
+  --sl-anchor-icon-gap: 0.25em;
+  line-height: 1.8;
+}
+
+/* First heading after hero shouldn't have top border */
+.sl-markdown-content > h2:first-child {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+/* Lists: more internal spacing */
+.sl-markdown-content li + li {
+  margin-top: 0.5rem;
+}
+
+.sl-markdown-content li > ul,
+.sl-markdown-content li > ol {
+  margin-top: 0.5rem;
+}
+
+/* Inline code */
+.sl-markdown-content :not(pre) > code {
+  background-color: var(--semantic-color-contrast-light);
+  color: var(--semantic-color-text-neutral-bold);
+  border-radius: var(--primitive-radius-sm);
+}
+
+/* Code blocks: more breathing room + design system tokens */
+.sl-markdown-content pre {
+  margin-block: 2rem;
+  padding: 1.5rem;
+}
+
+.expressive-code {
+  --ec-brdRad: var(--primitive-radius-xl);
+  --ec-frm-edActTabIndTopCol: transparent;
+}
+
+.expressive-code .copy button {
+  border-radius: var(--primitive-radius-lg) !important;
+  padding: 0 !important;
+}
+
+.expressive-code .copy button div {
+  transform: scale(0.85) !important;
+  border-radius: var(--primitive-radius-lg) !important;
+  background: transparent !important;
+}
+
+.expressive-code .frame {
+  --code-background: var(--semantic-color-surface-neutral-default);
+}
+
+.expressive-code .frame.has-title:not(.is-terminal) {
+  position: relative !important;
+}
+
+.expressive-code .frame.has-title:not(.is-terminal) .header {
+  background: var(--semantic-color-surface-neutral-default) !important;
+  border: none !important;
+  padding: 0.75rem 1rem 0.5rem !important;
+  margin: 0 !important;
+  box-shadow: none !important;
+}
+
+.expressive-code .frame.has-title:not(.is-terminal) .copy {
+  position: absolute !important;
+  top: 0.5rem !important;
+  right: 0.5rem !important;
+}
+
+.expressive-code .frame.has-title:not(.is-terminal) pre {
+  margin-top: 0 !important;
+}
+
+.expressive-code figcaption .title {
+  background-color: var(--semantic-color-surface-neutral-bold) !important;
+  color: var(--semantic-color-text-neutral-contrast) !important;
+  font-size: var(--primitive-typography-size-xs) !important;
+  font-weight: 600 !important;
+  padding: 0.2em 0.75em !important;
+  border-radius: var(--primitive-radius-full) !important;
+  display: inline-block !important;
+}
+/* Paragraphs after headings: a bit tighter */
+.sl-markdown-content h2 + p {
+  margin-top: 0.75rem;
+}
+
+.sl-markdown-content .sl-heading-wrapper.level-h3 + * {
+  margin-top: 0.75rem !important;
+}
+
+/* ───────────────────────────────────────────
+   Sidebar
+   ─────────────────────────────────────────── */
+
+/* More space between sidebar items */
+.sidebar-content ul li {
+  padding-block: 0.15rem;
+}
+
+/* Align sidebar nav items flush with logo and search */
+.sidebar-content summary {
+  padding-inline: 0 !important;
+}
+
+
+.sidebar-content {
+  --sl-sidebar-item-padding-inline: 0;
+  padding: 0 1.5rem 0 !important;
+  gap: 0 !important;
+}
+
+.sidebar-content::after {
+  display: none !important;
+}
+
+/* Sidebar nav link hover */
+.sidebar-content a:hover {
+  color: var(--semantic-color-text-neutral-contrast) !important;
+}
+
+/* Sidebar nav link active/hover background */
+.sidebar-content a[aria-current="page"] {
+  background-color: color-mix(in srgb, var(--semantic-color-surface-neutral-default) 20%, transparent) !important;
+  color: var(--semantic-color-text-neutral-contrast) !important;
+  padding-left: 0.5rem !important;
+  border-radius: var(--primitive-radius-md) !important;
+}
+
+/* Bottom padding on scrolling nav list */
+sl-sidebar-state-persist {
+  display: block;
+  padding-bottom: 4rem;
+}
+
+/* Bottom padding on TOC list */
+.right-sidebar-panel {
+  padding-bottom: 4rem;
+}
+
+/* Remove nested list indentation and border */
+.sidebar-content ul ul li {
+  margin-inline-start: 0 !important;
+  border-inline-start: none !important;
+  padding-inline-start: 0 !important;
+}
+
+/* Section group headings */
+.sidebar-content .top-level > li:first-child {
+  margin-top: 1rem;
+}
+
+.sidebar-content .top-level > li + li {
+  margin-top: 0.5rem;
+}
+
+/* ───────────────────────────────────────────
+   Header (hidden on desktop — content moved to sidebar)
+   ─────────────────────────────────────────── */
+
+/* Kill header bar — hamburger floats independently */
+:root,
+:root[data-theme='light'],
+:root[data-theme='dark'] {
+  --sl-color-bg-nav: transparent;
+  --sl-color-hairline-shade: transparent;
+  --sl-nav-height: 0px;
+}
+
+/* Hamburger button — circular, contrasting bg */
+starlight-menu-button button {
+  background-color: var(--semantic-color-contrast-light) !important;
+  color: var(--semantic-color-contrast-dark) !important;
+  border-radius: var(--primitive-radius-full) !important;
+  width: 2.75rem !important;
+  height: 2.75rem !important;
+  top: 1rem !important;
+  box-shadow: var(--primitive-shadow-elevation-3) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Floating hamburger — override Starlight's outer header */
+header.header {
+  position: fixed !important;
+  inset-block-start: 1rem !important;
+  inset-inline-start: auto !important;
+  inset-inline-end: 1rem !important;
+  width: auto !important;
+  height: auto !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  border-bottom: none !important;
+  z-index: 10 !important;
+}
+
+@media (min-width: 50rem) {
+  header.header,
+  starlight-menu-button {
+    display: none !important;
+  }
+}
+
+/* ───────────────────────────────────────────
+   Sidebar — logo, search, and theme toggle
+   ─────────────────────────────────────────── */
+
+/* Sidebar — inverted colors, switches with theme */
+.sidebar-pane {
+  --sl-color-bg-sidebar: var(--semantic-color-surface-neutral-bold);
+  --sl-color-white: color-mix(in srgb, var(--semantic-color-text-neutral-contrast) 70%, transparent);
+  --sl-color-gray-2: color-mix(in srgb, var(--semantic-color-text-neutral-contrast) 70%, transparent);
+  --sl-color-gray-3: color-mix(in srgb, var(--semantic-color-text-neutral-contrast) 70%, transparent);
+  background-color: var(--semantic-color-surface-neutral-bold);
+  color: color-mix(in srgb, var(--semantic-color-text-neutral-contrast) 70%, transparent);
+}
+
+/* Let sidebar stretch full height so the sticky footer works */
+@media (min-width: 50rem) {
+  .sidebar-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+}
+
+/* Invert logo in light mode */
+[data-theme='dark'] .sidebar-logo-img {
+  filter: invert(1);
+}
+
+/* Search bar — dark bg, light text everywhere (sidebar + mobile) */
+site-search button[data-open-modal] {
+  width: 100%;
+  justify-content: flex-start;
+  border: 1px solid var(--semantic-color-border-neutral-default) !important;
+  border-radius: 0.5rem !important;
+  background-color: var(--semantic-color-surface-neutral-bold) !important;
+  color: color-mix(in srgb, var(--semantic-color-text-neutral-contrast) 70%, transparent) !important;
+  padding-inline-start: 0.5rem !important;
+  height: 2rem !important;
+  font-size: var(--sl-text-sm) !important;
+}
+
+site-search button[data-open-modal] span,
+site-search button[data-open-modal] svg {
+  color: color-mix(in srgb, var(--semantic-color-text-neutral-contrast) 70%, transparent) !important;
+}
+
+
+/* Show "Search" label on mobile (Starlight hides it by default) */
+site-search button[data-open-modal] .sl-hidden {
+  display: block !important;
+}
+
+/* Hide the keyboard shortcut badge in sidebar search (too cramped) */
+.sidebar-pane site-search button[data-open-modal] kbd {
+  display: none !important;
+}
+
+/* Theme toggle in sidebar — no extra overrides needed (scoped in ThemeToggle.astro) */
+
+/* Search popover — use sidebar bg colour */
+site-search dialog {
+  background-color: var(--semantic-color-surface-neutral-bold) !important;
+}
+
+site-search .dialog-frame {
+  background-color: var(--semantic-color-surface-neutral-bold) !important;
+}
+
+site-search #starlight__search {
+  --pagefind-ui-background: var(--semantic-color-surface-neutral-bold);
+  --pagefind-ui-border: var(--semantic-color-border-neutral-default);
+  --sl-color-accent: var(--semantic-color-border-neutral-subtle);
+  --sl-color-accent-high: var(--semantic-color-border-neutral-subtle);
+  --sl-color-accent-low: color-mix(in srgb, var(--semantic-color-surface-neutral-default) 30%, transparent);
+}
+
+#starlight__search .pagefind-ui__result-title:not(:where(.pagefind-ui__result-nested *)),
+#starlight__search .pagefind-ui__result-nested {
+  background-color: var(--semantic-color-surface-neutral-bold) !important;
+}
+
+
+/* Search input placeholder — needs contrast against dark bg */
+#starlight__search .pagefind-ui__search-input {
+  color: var(--semantic-color-text-neutral-contrast) !important;
+}
+
+#starlight__search .pagefind-ui__search-input::placeholder {
+  opacity: 0.5 !important;
+}
+
+/* Search icon (magnifying glass) — mask uses background-color via --pagefind-ui-text */
+#starlight__search .pagefind-ui__form::before {
+  --pagefind-ui-text: var(--semantic-color-text-neutral-contrast);
+}
+
+/* Clear input button (X) — mask uses background-color */
+#starlight__search .pagefind-ui__search-clear::before {
+  background-color: var(--semantic-color-text-neutral-contrast) !important;
+}
+
+/* Close modal button */
+site-search button[data-close-modal] {
+  color: var(--semantic-color-text-neutral-contrast) !important;
+}
+
+
+/* ───────────────────────────────────────────
+   Table of Contents — swap to left of main content
+   ─────────────────────────────────────────── */
+
+/* Hide TOC until there's enough horizontal space */
+.right-sidebar-container {
+  display: none !important;
+}
+
+/* When TOC is hidden, let main pane use full width */
+[data-has-sidebar][data-has-toc] .main-pane {
+  width: 100% !important;
+  --sl-content-width: 100%;
+  --sl-content-margin-inline: 0;
+}
+
+@media (min-width: 82rem) {
+  .right-sidebar-container {
+    display: block !important;
+    order: 1;
+    flex-shrink: 0;
+    width: 16rem;
+    padding-left: 2rem;
+  }
+
+  /* TOC flows naturally in the flex row */
+  .right-sidebar {
+    position: sticky;
+    top: 161px;
+    width: auto;
+    height: auto;
+    border-inline-start: none;
+    padding-top: 0;
+    overflow-y: auto;
+    max-height: calc(100vh - 161px);
+    border-top: 1px solid var(--semantic-color-border-neutral-default);
+  }
+
+  /* Let TOC text wrap naturally instead of clipping to a fixed width */
+  .right-sidebar-panel .sl-container {
+    width: auto;
+    max-width: none;
+  }
+
+  [data-has-sidebar][data-has-toc] .main-pane {
+    order: 2;
+    width: auto !important;
+    flex: 1;
+    min-width: 0;
+    --sl-content-margin-inline: 0 auto;
+    --sl-content-width: 80%;
+    padding-left: 3rem;
+  }
+}
+
+.right-sidebar-panel {
+  border-top: none;
+  padding-top: 1.25rem;
+}
+
+starlight-toc li + li {
+  margin-top: 0.35rem;
+}
+
+starlight-toc a[aria-current="true"] {
+  background-color: var(--semantic-color-contrast-light) !important;
+  border-radius: var(--primitive-radius-md) !important;
+}
+
+/* ───────────────────────────────────────────
+   Splash Hero — dot grid & logo
+   ─────────────────────────────────────────── */
+
+/* Dot grid background */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: '';
+  position: fixed;
+  inset: 4rem;
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.4) 1px, transparent 1px);
+  background-size: var(--primitive-spacing-4xl) var(--primitive-spacing-4xl);
+  pointer-events: none;
+  z-index: -1;
+  mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, black 30%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, black 30%, transparent 70%);
+}
+
+[data-theme='dark'] .hero::after {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.25) 1px, transparent 1px);
+}
+
+.hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Logo above title via pseudo-element */
+.hero .copy::before {
+  content: '';
+  display: block;
+  width: 120px;
+  height: 43px; /* 120 * (190/528) to match SVG aspect ratio */
+  background: url('/dp-logo_COL.svg') no-repeat left center / contain;
+  margin-bottom: 2rem;
+  opacity: 0.85;
+}
+
+[data-theme='dark'] .hero .copy::before {
+  background-image: url('/dp-logo_COL_dark.svg');
+}
+
+
+[data-has-hero] h1#_top {
+  font-family: var(--semantic-typography-display-sm-font-family), sans-serif !important;
+  text-transform: lowercase;
+}
+
+.hero .tagline {
+  max-width: 52ch;
+}
+
+.hero .tagline a {
+  color: var(--semantic-color-text-neutral-bold);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.hero .tagline a:hover {
+  text-decoration: underline;
+}
+
+@media (min-width: 50rem) {
+  .hero {
+    padding-block: clamp(2.5rem, calc(1rem + 2vmin), 10rem) !important;
+  }
+}
+
+/* Doc cards grid */
+.doc-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--primitive-spacing-3xl);
+}
+
+@media (min-width: 48rem) {
+  .doc-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.doc-card {
+  display: grid !important;
+  grid-template-columns: 1fr auto !important;
+  align-items: start !important;
+  gap: var(--primitive-spacing-3xl);
+  padding: var(--primitive-spacing-4xl);
+  background-color: var(--semantic-color-contrast-light);
+  border-radius: var(--primitive-radius-2xl);
+  border: var(--primitive-border-width-regular) solid var(--semantic-color-contrast-light);
+  text-decoration: none !important;
+  color: inherit !important;
+  box-shadow: var(--primitive-shadow-elevation-2);
+  transition: box-shadow 0.2s ease;
+}
+
+.doc-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.doc-card--accent {
+  background: linear-gradient(315deg, color-mix(in srgb, var(--primitive-color-brand-accent-500) 6%, transparent), var(--semantic-color-contrast-light));
+}
+
+.doc-card--accent:hover {
+  border-color: var(--primitive-color-brand-accent-500);
+  background: linear-gradient(315deg, color-mix(in srgb, var(--primitive-color-brand-accent-500) 12%, transparent), var(--semantic-color-contrast-light));
+}
+
+.doc-card--primary {
+  background: linear-gradient(315deg, color-mix(in srgb, var(--primitive-color-brand-primary-500) 6%, transparent), var(--semantic-color-contrast-light));
+}
+
+.doc-card--primary:hover {
+  border-color: var(--primitive-color-brand-primary-500);
+  background: linear-gradient(315deg, color-mix(in srgb, var(--primitive-color-brand-primary-500) 12%, transparent), var(--semantic-color-contrast-light));
+}
+
+.doc-card--secondary {
+  background: linear-gradient(315deg, color-mix(in srgb, var(--primitive-color-brand-secondary-500) 6%, transparent), var(--semantic-color-contrast-light));
+}
+
+.doc-card--secondary:hover {
+  border-color: var(--primitive-color-brand-secondary-500);
+  background: linear-gradient(315deg, color-mix(in srgb, var(--primitive-color-brand-secondary-500) 12%, transparent), var(--semantic-color-contrast-light));
+}
+
+.doc-card--contrast {
+  background: linear-gradient(315deg, color-mix(in srgb, var(--semantic-color-contrast-dark) 6%, transparent), var(--semantic-color-contrast-light));
+}
+
+.doc-card--contrast:hover {
+  border-color: var(--semantic-color-contrast-dark);
+  background: linear-gradient(315deg, color-mix(in srgb, var(--semantic-color-contrast-dark) 12%, transparent), var(--semantic-color-contrast-light));
+}
+
+.doc-card__text h3 {
+  font-family: var(--semantic-typography-heading-h3-font-family), sans-serif;
+  font-size: var(--primitive-typography-size-base);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--semantic-color-text-neutral-bold);
+  margin: 0 0 0.5rem;
+}
+
+.doc-card__text p {
+  font-size: var(--primitive-typography-size-sm);
+  line-height: var(--primitive-typography-line-height-relaxed);
+  color: var(--semantic-color-text-neutral-default);
+  margin: 0;
+}
+
+.doc-card__icon--accent {
+  color: var(--primitive-color-brand-accent-500) !important;
+  opacity: 1 !important;
+}
+
+.doc-card__icon--accent svg {
+  stroke: var(--primitive-color-brand-accent-500) !important;
+}
+
+.doc-card__icon--primary {
+  color: var(--primitive-color-brand-primary-500) !important;
+  opacity: 1 !important;
+}
+
+.doc-card__icon--primary svg {
+  stroke: var(--primitive-color-brand-primary-500) !important;
+}
+
+.doc-card__icon--secondary {
+  color: var(--primitive-color-brand-secondary-500) !important;
+  opacity: 1 !important;
+}
+
+.doc-card__icon--secondary svg {
+  stroke: var(--primitive-color-brand-secondary-500) !important;
+}
+
+.doc-card__icon--contrast {
+  color: var(--semantic-color-contrast-dark) !important;
+  opacity: 1 !important;
+}
+
+.doc-card__icon--contrast svg {
+  stroke: var(--semantic-color-contrast-dark) !important;
+}
+
+.sl-markdown-content .doc-card__icon {
+  color: var(--semantic-color-text-neutral-default);
+  opacity: 0.4;
+  align-self: start !important;
+  margin-top: 0 !important;
+  padding-top: 0.2em;
+}
+
+.doc-card__icon svg {
+  width: var(--primitive-icon-size-4xl);
+  height: var(--primitive-icon-size-4xl);
+  stroke-width: var(--primitive-icon-stroke-thin);
+}
+
+/* Prev/next navigation cards */
+.pagination-links a {
+  background-color: var(--semantic-color-contrast-light) !important;
+  border-radius: var(--primitive-radius-xl) !important;
+}

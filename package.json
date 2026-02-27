@@ -1,0 +1,16 @@
+{
+  "name": "designpush-docs",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --port 5178",
+    "build": "astro build",
+    "preview": "astro preview --port 5178",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^5.7.0",
+    "@astrojs/starlight": "^0.34.0"
+  }
+}

@@ -1,0 +1,59 @@
+---
+/**
+ * Custom Sidebar — adds logo, search bar, and theme toggle.
+ *
+ * All dimension/layout properties are inline styles to prevent flash on navigation.
+ * Scoped styles handle ONLY visual properties (colors, borders, filters).
+ */
+import Search from 'virtual:starlight/components/Search';
+import ThemeToggle from './ThemeToggle.astro';
+import SidebarPersister from '@astrojs/starlight/components/SidebarPersister.astro';
+import SidebarSublist from '@astrojs/starlight/components/SidebarSublist.astro';
+
+const { sidebar } = Astro.locals.starlightRoute;
+---
+
+<div class="sidebar-logo" style="display:flex;flex-direction:column;background-color:var(--semantic-color-surface-neutral-bold);position:sticky;top:0;z-index:1;">
+  <div style="height:4rem;display:flex;align-items:center;margin-top:2rem;">
+    <a href="/" aria-label="DesignPush home" class="sidebar-logo-link">
+      <img src="/dp-logo_COL.svg" alt="DesignPush" class="sidebar-logo-light" style="width:120px;height:auto;" />
+      <img src="/dp-logo_COL_dark.svg" alt="DesignPush" class="sidebar-logo-dark" style="width:120px;height:auto;" />
+    </a>
+  </div>
+  <div style="padding:1.25rem 0 0.75rem;">
+    <Search />
+  </div>
+</div>
+
+<SidebarPersister>
+  <SidebarSublist sublist={sidebar} />
+</SidebarPersister>
+
+<div class="sidebar-footer" style="margin-top:auto;padding:0.75rem 0;position:sticky;bottom:0;z-index:1;background-color:var(--semantic-color-surface-neutral-bold);">
+  <ThemeToggle />
+</div>
+
+<style>
+  .sidebar-logo {
+    border-bottom: 1px solid var(--sl-color-gray-6);
+    background-color: var(--semantic-color-surface-neutral-bold);
+  }
+
+  .sidebar-logo-light {
+    display: block;
+  }
+  .sidebar-logo-dark {
+    display: none;
+  }
+  :global([data-theme='light']) .sidebar-logo-light {
+    display: none;
+  }
+  :global([data-theme='light']) .sidebar-logo-dark {
+    display: block;
+  }
+
+  .sidebar-footer {
+    border-top: 1px solid var(--sl-color-gray-3);
+    background-color: var(--semantic-color-surface-neutral-bold);
+  }
+</style>

@@ -1,0 +1,179 @@
+---
+/**
+ * Segmented pill toggle for light / dark / auto theme switching.
+ * Replaces Starlight's default ThemeSelect dropdown.
+ *
+ * Keeps a hidden <select> inside <starlight-theme-select> so
+ * Starlight's built-in JS (ThemeProvider + custom element) still works.
+ */
+---
+
+<starlight-theme-select>
+  {/* Hidden select — Starlight's JS listens to change events on this */}
+  <select aria-hidden="true" tabindex="-1" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;">
+    <option value="dark">Dark</option>
+    <option value="light">Light</option>
+    <option value="auto" selected>Auto</option>
+  </select>
+
+  <div class="theme-toggle" role="radiogroup" aria-label="Select theme">
+    <button type="button" class="theme-toggle__btn" data-theme-value="light" aria-label="Light theme" title="Light">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+    </button>
+    <button type="button" class="theme-toggle__btn" data-theme-value="dark" aria-label="Dark theme" title="Dark">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </button>
+    <button type="button" class="theme-toggle__btn" data-theme-value="auto" aria-label="System theme" title="Auto">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+        <line x1="8" y1="21" x2="16" y2="21"></line>
+        <line x1="12" y1="17" x2="12" y2="21"></line>
+      </svg>
+    </button>
+    <div class="theme-toggle__indicator"></div>
+  </div>
+</starlight-theme-select>
+
+{/* Inlined to avoid FOUC. Uses global scope from ThemeProvider.astro */}
+<script is:inline>
+  StarlightThemeProvider.updatePickers();
+</script>
+
+<script>
+  type Theme = 'auto' | 'dark' | 'light';
+
+  const storageKey = 'starlight-theme';
+
+  const parseTheme = (theme: unknown): Theme =>
+    theme === 'auto' || theme === 'dark' || theme === 'light' ? theme : 'auto';
+
+  const loadTheme = (): Theme =>
+    parseTheme(typeof localStorage !== 'undefined' && localStorage.getItem(storageKey));
+
+  function storeTheme(theme: Theme): void {
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem(storageKey, theme === 'light' || theme === 'dark' ? theme : '');
+    }
+  }
+
+  const getPreferredColorScheme = (): Theme =>
+    matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+
+  function applyTheme(theme: Theme): void {
+    document.documentElement.dataset.theme = theme === 'auto' ? getPreferredColorScheme() : theme;
+    storeTheme(theme);
+    // Sync any Starlight pickers if available
+    if (typeof StarlightThemeProvider !== 'undefined') {
+      StarlightThemeProvider.updatePickers(theme);
+    }
+  }
+
+  // React to system preference changes
+  matchMedia('(prefers-color-scheme: light)').addEventListener('change', () => {
+    if (loadTheme() === 'auto') applyTheme('auto');
+  });
+
+  function initThemeToggle(root: HTMLElement) {
+    const buttons = root.querySelectorAll<HTMLButtonElement>('.theme-toggle__btn');
+    const indicator = root.querySelector<HTMLElement>('.theme-toggle__indicator');
+
+    function updateActive(value: string) {
+      buttons.forEach((btn, i) => {
+        const isActive = btn.dataset.themeValue === value;
+        btn.classList.toggle('is-active', isActive);
+        btn.setAttribute('aria-checked', String(isActive));
+        if (isActive && indicator) {
+          indicator.style.transform = `translateX(${i * 100}%)`;
+        }
+      });
+    }
+
+    // Set initial state from stored preference
+    updateActive(loadTheme());
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const value = parseTheme(btn.dataset.themeValue);
+        applyTheme(value);
+        // Update all toggles on page
+        document.querySelectorAll<HTMLElement>('starlight-theme-select').forEach((el) => {
+          el.querySelectorAll<HTMLButtonElement>('.theme-toggle__btn').forEach((b, i) => {
+            const active = b.dataset.themeValue === value;
+            b.classList.toggle('is-active', active);
+            b.setAttribute('aria-checked', String(active));
+            const ind = el.querySelector<HTMLElement>('.theme-toggle__indicator');
+            if (active && ind) ind.style.transform = `translateX(${i * 100}%)`;
+          });
+        });
+      });
+    });
+  }
+
+  // Initialize on page load and after Astro view transitions
+  document.querySelectorAll<HTMLElement>('starlight-theme-select').forEach(initThemeToggle);
+  document.addEventListener('astro:after-swap', () => {
+    document.querySelectorAll<HTMLElement>('starlight-theme-select').forEach(initThemeToggle);
+  });
+</script>
+
+<style>
+  .theme-toggle {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    background-color: color-mix(in srgb, var(--semantic-color-surface-neutral-default) 20%, transparent);
+    border-radius: var(--primitive-radius-full);
+    padding: 3px;
+    gap: 0;
+  }
+
+  .theme-toggle__btn {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 24px;
+    border: none;
+    background: transparent;
+    color: color-mix(in srgb, var(--semantic-color-text-neutral-contrast) 50%, transparent);
+    cursor: pointer;
+    border-radius: var(--primitive-radius-full);
+    transition: color 0.2s ease;
+    padding: 0;
+  }
+
+  .theme-toggle__btn:hover {
+    color: var(--semantic-color-text-neutral-contrast);
+  }
+
+  .theme-toggle__btn.is-active {
+    color: var(--semantic-color-text-neutral-bold);
+  }
+
+  .theme-toggle__indicator {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 28px;
+    height: 24px;
+    background-color: var(--semantic-color-surface-neutral-subtle);
+    border-radius: var(--primitive-radius-full);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  }
+</style>
