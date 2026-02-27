@@ -21,28 +21,28 @@ You get three brand palettes:
 - **Secondary** — Supporting brand color (accents, secondary actions)
 - **Accent** — Highlight color (badges, emphasis, decorative elements)
 
-Each palette contains shades from **50** (lightest) to **950** (darkest). Click any swatch to edit it.
+Each palette contains shades from **50** (lightest) to **950** (darkest). 
 
 ### Editing a color
 
-When you click a swatch, a color picker opens inline:
+DesignPush uses the OKLCH color space for perceptually uniform color generation, with a familiar interface:
 
-1. **Color picker** — Visual HSL picker for selecting hue and saturation
-2. **Hex input** — Type an exact hex value (e.g., `#0168B5`)
-3. **Hue slider** — Adjust the hue across the full 360-degree spectrum
-4. **Saturation slider** — Control color intensity
+1. **Saturation/brightness field** —  — A gradient area where you drag to select saturation (horizontal) and brightness (vertical) for the current hue
+2. **Hue slider** — A rainbow spectrum bar below the field to select hue across the full 360-degree range
+3. **Color history** — Up to 5 recent colors shown as circular swatches for quick reuse
+4. **Hex input** — Type an exact hex value (e.g., #3A9691) — DesignPush converts it to OKLCH internally to ensure consistent lightness and contrast across your palette
+5. **Cancel / Save** — Dismiss or confirm your selection
 
-The picker also shows a **color history** (up to 10 recent colors, stored in your browser) so you can quickly return to previously used values.
 
 ### Shade generation
 
-When you change a base shade, DesignPush can auto-generate the full shade scale. This creates a perceptually balanced ramp from light (50) to dark (950) based on the shade you edited.
+When you change a 500 shade, DesignPush will auto-generate the full shade scale. This creates a perceptually balanced ramp from light (50) to dark (950) based on the shade you edited.
 
 ### Feedback palettes
 
 Four feedback palettes communicate system states:
 
-- **Success** — Positive outcomes (green tones)
+- **Success** — Positive outcomes (default green tones)
 - **Warning** — Caution states (amber/yellow tones)
 - **Error** — Error states (red tones)
 - **Info** — Informational states (blue tones)
@@ -51,18 +51,20 @@ These work identically to brand palettes — same shade range, same editing cont
 
 ### Neutral palette
 
-The neutral palette provides grays for text, borders, backgrounds, and subtle UI elements. It includes shades from 50 to 950, plus **white** and **black**.
+The neutral palette provides grays for text, borders, backgrounds, and subtle UI elements. It includes shades from 50 to 950. 
 
-Neutrals have two additional controls:
+Neutral has two controls:
 
 - **Hue slider** (0-360 degrees) — Tint your grays with a subtle color (warm grays, cool grays, etc.)
 - **Saturation slider** (0-20%) — Control how much color tint the grays carry
 
 A saturation of 0 gives you pure grays. Bumping it to 5-10% and choosing a hue near your brand color gives you harmonious, slightly tinted grays.
 
+**white** and **black** tokens are included automatically in the neutral palette.  These are non-editable, and included for selection in semantic color tokens 
+
 ### Accessibility matrix
 
-The Color showcase includes an **Accessibility** tab that evaluates WCAG contrast ratios between foreground and background color combinations. This helps you verify that your palette choices meet accessibility standards before you publish.
+The Color showcase includes an **Accessibility** tab that evaluates WCAG contrast ratios between foreground and background color combinations. Use this to check and verify that your palette choices meets W3C accessibility standards.
 
 ### Export format
 
@@ -94,16 +96,33 @@ Click any font slot to change it. You can select from your font library or open 
 
 ### Font size scale
 
-Font sizes use a **fluid typography** system with `clamp()` values that scale responsively between viewport sizes. You configure:
+Font sizes are generated mathematically from two core settings:
 
-- **Type scale ratio** — Controls the mathematical relationship between sizes (1.125 Minor Second through 2.0 Octave). Higher ratios create more dramatic size differences between headings and body text.
-- **Base size** — The starting point (typically 16px)
+- **Scale ratio** — The multiplier between each step in the type scale. Options range from Minor Second (1.125) through Perfect Fourth (1.333). Higher ratios create more dramatic contrast between heading and body sizes; lower ratios keep things tighter and more uniform.
+- **Base size** — The starting point for the scale (default 16px). All other sizes are calculated relative to this value.
 
-The generated scale produces sizes from `xs` through `6xl`, each expressed as a `clamp()` function for responsive scaling.
+The generated scale produces sizes from `xs` through `6xl`.
+
+#### Fluid typography
+
+When **Enable Fluid Typography** is toggled on, each size is output as a `clamp()` value that scales smoothly between a minimum and maximum size based on viewport width. You control this with four inputs:
+
+- **Min Size / Max Size** — The floor and ceiling for the base font size (e.g., 14px–18px). All other scale steps adjust proportionally.
+- **Min Viewport / Max Viewport** — The viewport breakpoints where scaling begins and ends (e.g., 320px–1920px). Below the min, fonts hold at their smallest size. Above the max, they hold at their largest. Between the two, they scale linearly.
+
+When fluid typography is disabled, sizes are output as static values instead of `clamp()` functions.
+
+#### Display units
+
+The **Display as Px** toggle switches the preview between `px` and `rem` values. This is a display preference only — it doesn't affect the underlying token output.
+
+#### Preview font
+
+The **Preview Font** dropdown lets you toggle the scale preview between your heading and body font selections so you can see how the scale looks with each typeface.
 
 ### Font weights
 
-Standard weight tokens from **Thin** (100) to **Black** (900):
+Standard, non-editable weight tokens from **Thin** (100) to **Black** (900):
 
 | Token | Value |
 |-------|-------|
@@ -121,7 +140,7 @@ Standard weight tokens from **Thin** (100) to **Black** (900):
 
 Control vertical rhythm with named line-height tokens:
 
-| Token | Typical value |
+| Token | Preset value |
 |-------|--------------|
 | none | 1 |
 | tight | 1.25 |
@@ -134,7 +153,7 @@ Control vertical rhythm with named line-height tokens:
 
 Fine-tune character spacing:
 
-| Token | Typical value |
+| Token | Preset value |
 |-------|--------------|
 | tighter | -0.05em |
 | tight | -0.025em |
@@ -474,7 +493,7 @@ Each token shows a preview using sample icons (home, heart) at the specified siz
 - **Every primitive token has a description field** — Use it to document the token's purpose. These descriptions are included in exports and are particularly useful for AI tools. See [AI Workflow](/features/ai-workflow/).
 - **Unit display is cosmetic** — The px/rem toggle in spacing, radius, and border width showcases changes the *display* only. Exported values use the format best suited for each output (typically `rem` for CSS, raw numbers for JS/TS).
 - **Changes auto-save** — Every edit is persisted automatically with a 2-second debounce. No manual save needed.
-- **Token names are fixed** — You can change token *values*, but the token *names* (like `md`, `lg`, `elevation-3`) are part of the system structure and can't be renamed.
+- **Token names are fixed** — You can change token *values*, but the token *names* (like `md`, `lg`, `elevation-3`) are part of the system structure and can't be renamed. This prevents downstream breakage — since semantic and component tokens reference these names, renaming a foundation token could silently break chains across your entire system.
 
 ---
 
@@ -482,7 +501,7 @@ Each token shows a preview using sample icons (home, heart) at the specified siz
 
 ### Can I add custom shades beyond the 50-950 range?
 
-Not in the current version. The shade scale (50, 100, 200, ... 900, 950) is fixed. You can adjust the *values* of each shade, but you can't add new intermediate shades.
+The shade scale (50, 100, 200, ... 900, 950) is fixed — you can't add or remove shades. However, the 500 shade is your base color, and changing it will regenerate the entire scale around that new value.
 
 ### Should I use px or rem for spacing?
 
@@ -490,7 +509,7 @@ Use rem. It scales with the user's browser font size settings, which is better f
 
 ### Can I import colors from my existing brand guidelines?
 
-Yes — paste your hex values directly into the hex input field when editing any color swatch. You can paste values like `#0168B5` or `0168B5`.
+Yes — paste your hex values directly into the hex input field when editing the 500 color swatch. You can paste values like `#0168B5` or `0168B5`.
 
 ### What happens if I change a primitive that semantics reference?
 

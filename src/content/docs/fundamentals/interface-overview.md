@@ -62,7 +62,7 @@ The toolbar sits at the top of the editor. It contains five actions, from left t
 
 ### Help
 
-Opens contextual help. Icon-only button with a question mark icon.
+Icon-only button with a question mark icon. Launches this documentation site. 
 
 ### Reset
 
@@ -113,9 +113,9 @@ DesignPush auto-saves your work to the cloud (Supabase) with a 2-second debounce
 
 | Status | Meaning |
 |--------|---------|
-| Idle | No unsaved changes |
-| Saving... | Changes are being saved |
-| Saved | All changes saved successfully |
+| Unsaved Changes | Debounced autosave function |
+| Saving... | Changes are being saved to the cloud |
+| Saved | All changes saved successfully (with time stamp) |
 
 You don't need to manually save. Every edit you make is automatically persisted after a brief delay.
 
@@ -127,7 +127,7 @@ At the bottom of the sidebar, you'll find your profile card showing:
 
 - **Avatar** — Your profile picture
 - **Name and email** — Your account details
-- **Plan badge** — Your current plan (e.g., "BETA")
+- **User Badge** — Your current user group (e.g., "BETA")
 - **Version label** — Current app version (e.g., "v.0.9.1")
 - **Bug Report** — Opens an email pre-filled with your User ID and Design System ID for support
 - **Settings** — Account settings
@@ -141,7 +141,7 @@ DesignPush is designed for desktop use:
 
 - **Minimum width**: 1024px — below this, the layout may not display correctly
 - **Optimal width**: 1440px+ — all three columns display comfortably
-- **Auto-fullscreen**: When the viewport is below 1440px and the preview is open, the preview automatically switches to fullscreen mode to ensure it has enough space
+- **Fullscreen preview**: If the viewport is below 1440px and the preview is opened, the preview will open fullscreen mode to ensure it has enough space
 
 For the best experience, use a laptop or desktop browser at full width.
 
@@ -149,22 +149,18 @@ For the best experience, use a laptop or desktop browser at full width.
 
 ## Frequently asked questions
 
-### Why does the sidebar collapse when I open the preview?
-
-To give the editor enough horizontal space. When the editor column drops below 464px (due to the preview taking up space), the sidebar auto-collapses. You can manually reopen it, but you may want to close the preview first if you need both visible.
-
 ### Is there tablet or mobile support?
 
 Not currently. DesignPush requires a minimum viewport width of 1024px. The editor's three-column layout and detailed token controls are designed for desktop screens. Mobile support may come in a future version.
 
 ### Can I use keyboard shortcuts?
 
-The editor supports standard browser shortcuts (Ctrl/Cmd+Z for undo in text fields, tab navigation). There are no custom keyboard shortcuts in the current version.
+The editor supports standard browser shortcuts (Ctrl/Cmd+Z for undo in text fields, copy, paste, and tab and arrow key navigation). There are no custom keyboard shortcuts in the current version.
 
 ### Where is my data stored?
 
-Your token data is saved to Supabase (cloud) automatically. There's no local-only mode in the current version. See [Tips & Troubleshooting](/reference/tips-and-troubleshooting/) for more on data storage.
+Your token data is saved to the cloud (Supabase) automatically. There's no local-only mode in the current version. See [Tips & Troubleshooting](/reference/tips-and-troubleshooting/) for more on data storage.
 
 ### Can I have multiple projects?
 
-Each design system is a separate project. Check your dashboard for project management options.
+Not yet, but it is planned in for a later release. 

@@ -64,7 +64,7 @@ Each role has multiple variants for different emphasis levels:
 - **default** — Standard usage
 - **subtle** — Lower emphasis (lighter backgrounds, muted text)
 - **bold** — Higher emphasis (darker backgrounds, prominent text)
-- Additional role-specific variants (e.g., `hover`, `muted`)
+- **contrast** — (Semantic text only) Used for text on dark surfaces (e.g., white text on a bold background)
 
 This creates a matrix of approximately 80+ semantic color tokens (8 intents x 4 roles x 2-4 variants each).
 
@@ -80,19 +80,6 @@ For each mode, you select which primitive shade the semantic token should refere
 For example, `semantic-color-text-primary-default`:
 - Light mode dropdown: select from brand-primary shades (50-950) — typically a dark shade like 700 for good contrast on light backgrounds
 - Dark mode dropdown: select from brand-primary shades (50-950) — typically a light shade like 300 for good contrast on dark backgrounds
-
-### Tab organization
-
-Semantic colors are organized into tabs by palette group:
-
-| Tab | Contains |
-|-----|---------|
-| **Brand** | Primary, Secondary, Accent intents |
-| **Feedback** | Success, Warning, Error, Info intents |
-| **Neutral** | Neutral intent (plus contrast tokens) |
-| **Accessibility** | WCAG contrast evaluation matrix |
-
-The Accessibility tab provides a contrast matrix similar to the one in [Primitive Colors](/editing-tokens/primitive-tokens/), but evaluated at the semantic level — checking that your light/dark theme mappings meet WCAG AA/AAA standards.
 
 ### Export format
 
@@ -120,18 +107,21 @@ Semantic typography defines **composite type styles** — combinations of font f
 
 ### Available type styles
 
-Type styles follow a hierarchy:
+Typography semantic tokens are organized into style categories, each accessible via tabs:
 
-| Style | Typical use |
-|-------|------------|
-| **H1–H6** | Heading levels |
-| **Body / Paragraph** | Standard body text |
-| **Caption** | Small supporting text |
-| **Label** | Form labels, UI labels |
+| Category | Typical use |
+|----------|------------|
+| **Display** | Hero sections, landing pages, feature highlights |
+| **Headings** | Heading levels (H1–H6) |
+| **Body** | Standard body and paragraph text |
+| **Labels** | Form labels, UI labels |
+| **Captions** | Small supporting text |
+| **Code** | Monospace, code snippets |
+| **Overline** | Uppercase small text above headings or sections |
 
 ### Properties per style
 
-Each type style configures:
+Each style token includes a live preview and configurable properties:
 
 | Property | Selects from |
 |----------|-------------|
@@ -142,13 +132,7 @@ Each type style configures:
 | **Letter spacing** | Primitive typography letter spacing |
 | **Text transform** | none, uppercase, lowercase, capitalize |
 
-Properties left empty (`null`) inherit from the primitive configuration defaults.
-
-### Editing type styles
-
-Each type style appears as an expandable row. Click to expand and configure its properties using dropdown selectors that reference primitive typography tokens.
-
-A live preview shows how the type style looks with current settings, including the font rendering at the specified size and weight.
+Properties marked **(Inherited)** pull their values from your primitive typography settings. You can override any inherited value at the semantic level. By default, most properties are set to inherit — you only need to override the specific properties you want to change.
 
 ### Export format
 
@@ -217,26 +201,37 @@ Each spacing token shows:
 
 Focus tokens control the appearance of keyboard focus indicators — essential for accessibility. When users navigate with a keyboard (Tab key), focused elements need a clearly visible outline.
 
-### Focus properties
+### Focus
 
-| Token | Controls | Default |
-|-------|----------|---------|
-| **Ring width** | Thickness of the focus outline | 2px |
-| **Ring color** | Color of the focus outline | Semantic border color (typically brand primary) |
-| **Outline offset** | Gap between the element and the focus ring | 2px |
-| **Ring opacity** | Transparency of the focus ring | 1.0 |
+Define focus ring styles for keyboard navigation and accessibility. These tokens control the outline and ring appearance when users tab through interactive elements. A live preview shows your current configuration.
 
-### Editing
+The focus ring is composed of two layers — an **outline** (inner) and a **ring** (outer) — giving you fine-grained control over the visual treatment.
 
-The ring color uses a grouped dropdown with options organized by:
-- **Intent variants** — Border colors from each semantic intent (primary, secondary, neutral, etc.)
+#### Focus properties
+
+| Property | Controls | Default |
+|----------|----------|---------|
+| **Outline width** | Thickness of the inner outline | `border-width.medium` (2px) |
+| **Outline offset** | Gap between the element and the outline | `spacing.xs` (2px) |
+| **Outline color** | Color of the inner outline | Primary Default |
+| **Ring width** | Thickness of the outer ring | `border-width.heavy` (3px) |
+| **Ring color** | Color of the outer ring | Primary Default |
+| **Ring opacity** | Transparency of the outer ring | `opacity.alpha-25` (25%) |
+
+Each property references an existing primitive or semantic token, keeping your focus styles connected to the rest of your system.
+
+#### Editing
+
+Color properties use a grouped dropdown with options organized by:
+
+- **Intent variants** — Colors from each semantic intent (primary, secondary, neutral, etc.)
 - **Other** — Additional color options
 
 This lets you pick a focus color that's consistent with your brand but distinct enough to be visible.
 
-### Accessibility note
+#### Accessibility note
 
-Focus rings are critical for accessibility compliance (WCAG 2.4.7). The default settings provide a visible focus indicator that meets accessibility standards. If you customize these values, test with keyboard navigation to ensure focus remains clearly visible against all background colors in your design system.
+Focus rings are critical for accessibility compliance (WCAG 2.4.7). The default two-layer approach — a solid outline with a semi-transparent outer ring — provides strong visibility across different background colors. If you customize these values, test with keyboard navigation to ensure focus remains clearly visible throughout your design system.
 
 ### Export format
 
@@ -297,7 +292,7 @@ Transitions export as composite tokens in JSON, referencing their primitive comp
 
 ### Why can't I enter a hex value directly in semantic color?
 
-By design. Semantic tokens are *aliases* that reference primitives — they don't hold raw values. This ensures the layer architecture works correctly: change a primitive once, and it cascades through all semantics that reference it. If you need a new color value, add it to the [Primitive Color](/editing-tokens/primitive-tokens/) palette first, then reference it from the semantic layer.
+By design. Semantic tokens are *aliases* that reference primitives — they don't hold raw values. This ensures the layer architecture works correctly: change a primitive once, and it cascades through all semantics that reference it. 
 
 ### How does dark mode work at the semantic level?
 
@@ -305,7 +300,7 @@ Each semantic color token has **two mappings** — one for light mode and one fo
 
 ### What if a type style property is left empty?
 
-Empty (`null`) properties inherit from the primitive typography defaults. This is useful when you want a type style to follow the base configuration for most properties but override just one or two (e.g., set a different font weight for headings but inherit everything else).
+Empty (`inherited`) properties are set by the primitive typography defaults. This is useful when you want a type style to follow the base configuration for most properties but override just one or two (e.g., set a different font weight for headings but inherit everything else).
 
 ### Can I create my own semantic categories?
 
