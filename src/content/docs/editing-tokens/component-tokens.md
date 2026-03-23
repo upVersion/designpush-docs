@@ -93,15 +93,18 @@ For each state, you set:
 
 Color selectors are dropdown menus showing semantic color options grouped by role (text, surface, border, interactive) and intent (primary, secondary, neutral, etc.).
 
-### Compose tab
+### Compose tab *
 
-The Compose tab is an **interactive playground** where you assemble a complete component from your configured tokens. Select a variant, size, and layout to see the result. The tab provides:
+The Compose tab is an **interactive playground** where you assemble a complete component from your configured tokens. Select a variant, size, and layout to see the result. The tab provides:[preview-panel.md](assets/preview-panel.md)
+
 
 - **Variant selector** — Choose primary, secondary, ghost, etc.
 - **Size selector** — Choose sm, md, lg
 - **Layout selector** — Where applicable (e.g., icon position)
 - **Live preview** — The assembled component rendered with your tokens
 - **Code snippet** — Generated code (JSX, JSON, CSS) that you can copy
+
+(* Coming soon)
 
 ---
 
@@ -137,13 +140,6 @@ The Button Base tab includes:
 - **Pattern card** — Padding X/Y, border radius, border width, gap, icon size, icon stroke
 - **Layout card** — Min width, max width, justify-content, cursor, white-space, overflow/text-overflow
 - **Context textarea** — Description for AI and documentation
-
-### Compose options
-
-The Button Compose tab offers:
-- 4 variants (primary, secondary, ghost, destructive)
-- 3 sizes (sm, md, lg)
-- Layout options for icon positioning
 
 ---
 
@@ -225,8 +221,8 @@ Throughout the component showcases, you'll see small colored badges next to toke
 
 | Badge color | Layer | Example |
 |-------------|-------|---------|
-| **Purple** | Primitive | `primitive.radius.md` |
-| **Teal** | Semantic | `semantic.color.text.primary.default` |
+| **Yellow** | Primitive | `primitive.radius.md` |
+| **Blue** | Semantic | `semantic.color.text.primary.default` |
 
 **Click any badge to copy the full token path** to your clipboard. This is useful when:
 - Writing CSS that references tokens: `var(--primitive-radius-md)`
@@ -272,7 +268,7 @@ The current version has a fixed set of variants per component (4 for Button, 8 f
 
 ### What goes in the Context/Description field?
 
-Usage guidelines for the component. Think of it as a brief design spec: when to use each variant, sizing rules, do's and don'ts. These descriptions are embedded in your exports and help AI tools generate appropriate code. See the section above for examples.
+Usage and implementation guidelines for the component. Think of it as a brief design spec: when to use each variant, sizing rules, do's and don'ts. These descriptions are embedded in your exports and help AI tools generate appropriate code. See the section above for examples.
 
 ### Can I preview all variants at once?
 

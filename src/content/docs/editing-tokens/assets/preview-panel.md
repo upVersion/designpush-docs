@@ -20,19 +20,39 @@ The preview button also highlights when the panel is open, providing a visual in
 
 ## Preview pages
 
-The preview panel showcasing different aspects of your design system. :
+The preview panel contains 10 pages, each showcasing different aspects of your design system:
 
 | Page | What it shows |
 |------|--------------|
-| **Colors** | Your full color palette (primitive and semantic) |
-| **Typography** | Heading and body type styles rendered at all sizes |
+| **Overview** | A combined view of key components and tokens |
 | **Buttons** | All button variants, sizes, and states |
 | **Badges** | All badge intents, styles, and sizes |
-| **Text Input** | All text input variants, sizes, and states |
+| **Form Controls** | Text inputs, textareas, and form elements |
+| **Typography** | Heading and body type styles rendered at all sizes |
+| **Colors** | Your full color palette (primitive and semantic) |
+| **Spacing** | Spacing scale visualization |
+| **Surfaces** | Background and surface color combinations |
+| **Navigation** | Navigation patterns and tab components |
+| **Overlays** | Modal, tooltip, and overlay patterns |
 
-Switch between pages using the dropdown selector at the bottom of the preview panel. 
+Switch between pages using the dropdown selector at the bottom of the preview panel.
 
-Preview pages are currently in development and will be rolled out during the beta testing phase. 
+---
+
+## Auto-sync with sidebar
+
+The preview automatically syncs with your sidebar selection. When you select a token category in the sidebar, the preview jumps to the most relevant page:
+
+| Sidebar selection | Preview page |
+|-------------------|-------------|
+| Primitive Color or Semantic Color | Colors |
+| Primitive Typography or Semantic Typography | Typography |
+| Primitive Spacing or Semantic Spacing | Spacing |
+| Button | Buttons |
+| Badge | Badges |
+| Text Input | Form Controls |
+
+For categories without a direct match (like Shadow, Z-Index, or Easing), the preview stays on its current page.
 
 ---
 
@@ -60,16 +80,32 @@ This is useful for verifying contrast and readability of your components on diff
 
 ---
 
-## React Components
+## Fullscreen mode
 
-The preview panel renders components use the **dp-react** component library — a comprehensive set of React components that use the designsystem tokens and can be integrated directly into your build:
+The preview panel supports fullscreen mode in two ways:
+
+### Manual fullscreen
+
+Click the maximize/expand control to enlarge the preview to fill the available screen area. This gives you the largest possible view of your components.
+
+### Auto-fullscreen
+
+When your browser viewport is **narrower than 1440px**, the preview automatically opens in fullscreen mode. This ensures the preview has enough space to render components accurately, even when the editor and sidebar would otherwise squeeze it too small.
+
+At wider viewports (1440px+), the preview shares space with the editor in the three-column layout.
+
+---
+
+## How preview rendering works
+
+The preview panel renders components using the **dp-react** component library — a dedicated copy of the design system's React components with its own CSS namespace (`dp-` prefix). This means:
 
 1. Preview components are **real React components**, not screenshots or mockups
 2. Token values are applied via **CSS custom properties** injected as inline styles
 3. Changes to tokens update the preview **in real-time** — no refresh needed
 4. The preview is fully interactive — you can hover, focus, and click components
 
-React component are currently in development and will will rolled out at a later date/ 
+The separate `dp-` namespace prevents preview styles from conflicting with the editor's own styles (which use the `ds-` namespace).
 
 ---
 
@@ -90,11 +126,11 @@ Yes. Preview components are fully interactive — hover states, focus rings, cli
 
 ### Can I resize the preview panel?
 
-The preview panel has a fixed width determined by the layout. You can expand it further by closing the sidebar, but there's no drag-to-resize. 
+The preview panel has a fixed width determined by the layout. You can expand it to fullscreen, but there's no drag-to-resize. Close the sidebar if you want more room for the preview in the three-column layout.
 
 ### Do all token categories have a preview?
 
-The preview is primarily focused on **components** (buttons, badges, inputs) and **visual tokens** (colors, typography). Some token categories like Z-Index, Breakpoints, and Layout don't have dedicated preview content — these are better evaluated in context within your actual application.
+The preview is primarily focused on **components** (buttons, badges, inputs) and **visual tokens** (colors, typography, spacing). Some token categories like Z-Index, Breakpoints, and Layout don't have dedicated preview content — these are better evaluated in context within your actual application.
 
 ### Why is the preview black/empty when I first open it?
 

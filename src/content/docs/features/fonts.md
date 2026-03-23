@@ -65,7 +65,7 @@ The search is debounced (300ms delay) so results appear as you type without exce
 
 ### Tips
 
-- Variable fonts (marked with the resize icon) are recommended — they support any weight value, not just fixed steps
+- Variable fonts (marked with the resize icon) are recommended — they generally support a full weight range and provide more choices when defining semantic text styles.  
 - Search for specific names rather than browsing (the Google Fonts library has 1,500+ fonts)
 - If a search fails, check your internet connection — the search queries the Google Fonts API
 

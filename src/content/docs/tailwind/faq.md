@@ -1,139 +1,64 @@
 ---
-title: Tailwind Preset FAQ
-description: Common questions about setup, colors, dark mode, typography, spacing, motion, breakpoints, framework integration, and updating the DesignPush Tailwind preset.
+title: Tailwind Theme FAQ
+description: Common questions about setup, colors, dark mode, typography, spacing, motion, breakpoints, framework integration, and updating the DesignPush Tailwind theme.
 ---
 
-**NOTE: Coming soon** — Tailwind CSS integration has been feature-flagged pending further testing and will be rolled out at a later date.
-
----
-
-Common questions about setting up, using, and troubleshooting the DesignPush Tailwind preset.
+Common questions about setting up, using, and troubleshooting the DesignPush Tailwind theme.
 
 ---
 
 ## Setup
 
-### How do I install the preset?
+### New build or existing site?
 
-Three steps:
+- **New build**: Use the theme in **replace** mode. Your design system is the only vocabulary — Tailwind's default classes like `bg-blue-500` or `p-4` are not available. See [New build setup](/tailwind/preset/#new-build).
+- **Existing site**: Use `preset.js` in **extend** mode. Your DesignPush tokens are added alongside Tailwind's defaults. Nothing breaks, migrate gradually. See [Existing site setup](/tailwind/preset/#existing-site).
 
-1. Copy the `build/tailwind/` folder into your project.
-2. Register it in `tailwind.config.js`:
+### How do I install the theme?
 
-```js
-module.exports = {
-  presets: [require('./design-system/build/tailwind/preset')],
-  content: ['./src/**/*.{html,js,jsx,ts,tsx}'],
-}
-```
-
-3. Import `variables.css` in your CSS entry point (required for semantic colors):
-
-```css
-@import '../design-system/build/core/variables.css';
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-```
+Depends on your project type. See the [main guide](/tailwind/preset/#new-build) for step-by-step setup for both bundler and HTML projects.
 
 ### Do I need to install any npm packages?
 
-No. The preset is a plain `.js` file with no dependencies. It works with any standard Tailwind v3 setup.
+For bundler projects (theme.css), you need `tailwindcss` v4+ installed. For HTML projects (preset.js + v3 CDN), nothing to install.
 
-### Does the preset work with Tailwind v4?
+### Does the theme work with Tailwind v3?
 
-Not directly. The preset uses `module.exports` (CommonJS), which is the Tailwind v3 config format. Tailwind v4 replaces JavaScript config with a CSS-first `@theme` directive.
+Yes — via `preset.js`. The export includes both `theme.css` (v4) and `preset.js` (v3). The v3 CDN approach works for both new builds and existing sites.
 
-For Tailwind v4, use the CSS variables export (`build/core/variables.css`) instead. Map the variables into your `@theme` block:
+---
 
-```css
-@import './design-system/build/core/variables.css';
+## Replace vs extend
 
-@theme {
-  --color-brand-primary-500: var(--primitive-color-brand-primary-500);
-  --spacing-md: var(--primitive-spacing-md);
-  /* ... */
-}
-```
+### What's the difference?
 
-### Does the preset replace Tailwind's default theme or extend it?
+**Replace** (`theme: presetTheme`): Your design system is the complete theme. Tailwind's built-in classes (`bg-blue-500`, `p-4`, `font-sans`) don't exist. Only your token names work. Best for new builds.
 
-It **replaces** it. The preset uses `theme` (not `theme.extend`), so Tailwind's built-in colors, spacing, and other defaults are removed. This is intentional — your design system becomes the single source of truth.
+**Extend** (`theme: { extend: presetTheme }`): Your tokens are added alongside Tailwind's defaults. Both `bg-blue-500` and `bg-brand-primary-500` work. Best for existing sites.
 
-If you need values that aren't in your design system, add them via `theme.extend` in your own config:
+### Does theme.css (v4) support extend mode?
+
+No. The `@theme` directive always replaces Tailwind's defaults. For extend mode with a v4 bundler, use `preset.js` via `@config`:
 
 ```js
-module.exports = {
-  presets: [require('./design-system/build/tailwind/preset')],
-  theme: {
-    extend: {
-      maxWidth: { prose: '65ch' },
-    },
-  },
-}
-```
-
-### I've already built my app with Tailwind. Can I drop in the preset?
-
-Partially — it depends on how your existing classes are named. The preset uses `theme` (not `theme.extend`), which **replaces** Tailwind's defaults. If your app uses default classes like `bg-blue-500`, `p-4`, `text-gray-700`, those stop working because those values no longer exist in the theme.
-
-The token names are also different:
-
-| Tailwind default | DesignPush preset |
-|---|---|
-| `bg-blue-500` | `bg-brand-primary-500` |
-| `p-4` | `p-xl` |
-| `text-gray-700` | `text-neutral-gray-700` |
-
-You have two options:
-
-**Option 1: Keep defaults alongside (recommended for existing projects)**
-
-Use `theme.extend` in your config instead of `presets`, so default Tailwind classes still work and you can gradually adopt the DesignPush classes:
-
-```js
+// tailwind.config.js
 const preset = require('./design-system/build/tailwind/preset');
-
 module.exports = {
-  theme: {
-    extend: preset.theme,  // merges on top, doesn't replace
-  },
-  content: ['./src/**/*.{html,js,jsx,ts,tsx}'],
+  theme: { extend: preset.theme }
 }
 ```
 
-This lets you use `bg-blue-500` and `bg-brand-primary-500` side by side while you migrate.
+### Can I use Tailwind's default color names like `red-500` or `blue-500`?
 
-**Option 2: Full migration**
+In **replace** mode (new build): No. The theme replaces Tailwind's default palette entirely.
 
-Use the preset as-is (which replaces defaults), then find-and-replace your old class names to the new token names across your codebase. Bigger upfront effort, but your entire app is then driven by your design system with no stale default classes.
+In **extend** mode (existing site): Yes. Default classes keep working alongside DesignPush classes.
 
-### I'm starting a new build. How does the preset work with AI coding tools like Claude?
+### Why don't `p-4`, `p-8` work?
 
-Set up the preset once in your `tailwind.config.js` and you're done. From that point on, you (or any AI assistant like Claude) just write standard Tailwind utility classes — but those classes output your DesignPush token values.
+In **replace** mode: The theme replaces Tailwind's numeric spacing with named tokens (`p-sm`, `p-md`, `p-lg`).
 
-Claude doesn't need to know anything about DesignPush. It writes `bg-brand-primary-500`, `font-heading`, `p-xl`, `rounded-md`, `shadow-elevation-2` — normal Tailwind syntax. The preset maps those classes to your actual colors, fonts, spacing, shadows, etc.
-
-The one thing to do is **give Claude the preset file or README as context** so it knows the available class names. Instead of defaulting to `bg-blue-500` (which won't exist), it will use `bg-brand-primary-500` because that's what's defined in the theme.
-
-In practice this means:
-1. Export your design system from DesignPush
-2. Drop `preset.js` into your project and register it in `tailwind.config.js`
-3. Share `preset.js` or `README.md` with Claude as project context
-4. Ask Claude to build your UI — it writes Tailwind classes, your design tokens do the rest
-
-### How do I verify the preset loaded correctly?
-
-Log the theme keys:
-
-```js
-const preset = require('./design-system/build/tailwind/preset');
-console.log(Object.keys(preset.theme));
-// → ['colors', 'fontFamily', 'fontSize', 'fontWeight', 'lineHeight', ...]
-```
-
-Or open `preview.html` in a browser to visually confirm your tokens are correct.
+In **extend** mode: They still work. Both `p-4` and `p-md` are available.
 
 ---
 
@@ -141,25 +66,27 @@ Or open `preview.html` in a browser to visually confirm your tokens are correct.
 
 ### Why do semantic color classes render as transparent?
 
-You're missing the CSS variables import. Semantic colors like `text-semantic-text-neutral-default` reference CSS custom properties (`var(--semantic-color-text-neutral-default)`) that are defined in `variables.css`. Without that file loaded, the variables don't exist and the browser falls back to transparent.
+You're missing `variables.css`. Semantic colors reference CSS custom properties defined there.
 
-Fix: add `@import '../design-system/build/core/variables.css';` before the Tailwind directives in your CSS entry point.
+**Bundler**: Add `@import '../design-system/build/core/variables.css';` before the theme import.
+
+**HTML**: Add `<link rel="stylesheet" href="./design-system/build/core/variables.css">` to `<head>`.
 
 ### What's the difference between primitive and semantic colors?
 
-**Primitive colors** are resolved to literal hex values in the preset (`#4F46E5`). They work without any CSS variable dependency. Use them for fixed, theme-independent colors.
+**Primitive colors** are literal hex values. They don't change with the theme.
 
 ```html
 <div class="bg-brand-primary-500">Always this exact color</div>
 ```
 
-**Semantic colors** are CSS variable references (`var(--semantic-color-*)`). They adapt when you switch between light and dark themes. Use them for UI surfaces, text, and borders that should respond to the theme.
+**Semantic colors** are CSS variable references. They adapt to light/dark mode.
 
 ```html
 <div class="bg-semantic-surface-neutral-subtle">Adapts to light/dark</div>
 ```
 
-### How do I use brand colors vs feedback colors vs neutral colors?
+### How do I use brand vs feedback vs neutral colors?
 
 - **Brand**: `bg-brand-primary-500`, `text-brand-secondary-300`, `border-brand-accent-700`
 - **Feedback**: `bg-feedback-error-500`, `text-feedback-success-600`, `border-feedback-warning-300`
@@ -167,17 +94,13 @@ Fix: add `@import '../design-system/build/core/variables.css';` before the Tailw
 
 Each palette has shades from 50 to 950. Neutral also includes `white` and `black`.
 
-### Can I use Tailwind's default color names like `red-500` or `blue-500`?
-
-No. The preset replaces Tailwind's default color palette entirely. Use the palette names from your design system instead (e.g. `brand-primary-500`, `feedback-error-500`). This prevents accidental use of off-brand colors.
-
 ---
 
 ## Dark mode
 
-### How does dark mode work with this preset?
+### How does dark mode work?
 
-Through CSS custom properties, not Tailwind's `dark:` variant. Your `variables.css` defines semantic color values for both `[data-theme="light"]` and `[data-theme="dark"]` selectors. The preset references those variables, so semantic colors update automatically when you change the `data-theme` attribute.
+Through CSS custom properties. Your `variables.css` defines semantic color values for both `[data-theme="light"]` and `[data-theme="dark"]` selectors. The theme references those variables, so semantic colors update automatically.
 
 ```html
 <html data-theme="light">  <!-- or "dark" -->
@@ -187,29 +110,15 @@ Through CSS custom properties, not Tailwind's `dark:` variant. Your `variables.c
 
 ```js
 function toggleTheme() {
-  const current = document.documentElement.getAttribute('data-theme');
-  const next = current === 'dark' ? 'light' : 'dark';
-  document.documentElement.setAttribute('data-theme', next);
+  const html = document.documentElement;
+  const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
 }
 ```
-
-### Can I use Tailwind's `dark:` variant alongside the preset?
-
-Yes. Add this to your config:
-
-```js
-module.exports = {
-  presets: [require('./design-system/build/tailwind/preset')],
-  darkMode: ['selector', '[data-theme="dark"]'],
-  content: ['./src/**/*.{html,js,jsx,ts,tsx}'],
-}
-```
-
-Now `dark:bg-neutral-gray-900` activates when `data-theme="dark"` is set. This is useful for one-off overrides that aren't covered by semantic tokens.
 
 ### Do primitive colors change in dark mode?
 
-No. Primitive colors are hard-coded hex values. Only semantic colors (prefixed with `semantic-`) respond to theme changes.
+No. Only `semantic-*` classes respond to theme changes.
 
 ---
 
@@ -217,72 +126,51 @@ No. Primitive colors are hard-coded hex values. Only semantic colors (prefixed w
 
 ### Why aren't my fonts rendering?
 
-The preset provides font family names but not the font files. You need to load the fonts yourself. Two options:
+The theme provides font family names but not the font files. `variables.css` includes `@import url(...)` statements that load them — but in **bundler setups** (Vite, Next, Astro), CSS `@import` chains get concatenated and those font imports end up mid-file where browsers silently ignore them.
 
-**Option A**: Import `variables.css`, which includes a Google Fonts `@import`:
+**Fix for bundler setups:** Check the `README.md` in your exported `build/tailwind/` folder — it includes the exact `<link>` tags for your selected fonts. Add them to your HTML `<head>`.
 
-```css
-@import '../design-system/build/core/variables.css';
-```
+**HTML setups** (`<link>` tag loading) work without this step.
 
-**Option B**: Add a `<link>` tag in your HTML:
+### What font classes are available?
 
-```html
-<link href="https://fonts.googleapis.com/css2?family=YOUR+FONT:wght@400..700&display=swap" rel="stylesheet">
-```
+Depends on your design system, but typically: `font-display`, `font-heading`, `font-body`, `font-mono`.
 
-Check `preview.html` to see which fonts your design system uses.
+### Why do font sizes use `clamp()`?
 
-### What font utility classes are available?
-
-Depends on your design system, but typically:
-
-- `font-display` — display/hero font
-- `font-heading` — heading font
-- `font-body` — body text font
-- `font-mono` — monospace/code font
-
-### Why do font size classes use `clamp()`?
-
-DesignPush generates fluid font sizes that scale between viewport widths. The `clamp()` function ensures text is readable on small screens without being oversized on large screens. This is handled automatically — just use `text-base`, `text-lg`, `text-2xl`, etc.
+DesignPush generates fluid font sizes that scale between viewport widths. Just use `text-base`, `text-lg`, `text-2xl` — the fluid scaling is automatic.
 
 ---
 
-## Spacing & Layout
+## Spacing & layout
 
 ### What spacing classes are available?
 
-Your design system defines a spacing scale. Common tokens:
+Named tokens instead of numbers. Common scale:
 
-| Class | Example |
+| Class | Typical value |
 |---|---|
-| `p-zero` | `padding: 0rem` |
-| `p-xs` | `padding: 0.125rem` |
-| `p-sm` | `padding: 0.25rem` |
-| `p-md` | `padding: 0.375rem` |
-| `p-lg` | `padding: 0.5rem` |
-| `p-xl` | `padding: 0.75rem` |
-| `p-2xl` | `padding: 1rem` |
-| `p-3xl` | `padding: 1.5rem` |
-| `p-4xl` | `padding: 2rem` |
+| `p-zero` | 0rem |
+| `p-xs` | 0.125rem |
+| `p-sm` | 0.25rem |
+| `p-md` | 0.375rem |
+| `p-lg` | 0.5rem |
+| `p-xl` | 0.75rem |
+| `p-2xl` | 1rem |
+| `p-3xl` | 1.5rem |
+| `p-4xl` | 2rem |
 
-The exact values depend on your token configuration. Check `preview.html` for the current scale.
+Exact values depend on your tokens. Check `preview.html` for the current scale.
 
-### Can I still use arbitrary values like `p-[24px]`?
+### Can I use arbitrary values like `p-[24px]`?
 
-Yes. Tailwind's arbitrary value syntax works independently of the preset. Use it for one-off values that don't exist in your design system.
-
-### Why don't Tailwind's default spacing values (p-4, p-8) work?
-
-The preset replaces Tailwind's default spacing scale with your design system's named tokens (`p-sm`, `p-md`, `p-lg`, etc.). Numeric spacing like `p-4` is not included unless your design system defines a `4` spacing token.
+Yes. Tailwind's arbitrary value syntax always works, regardless of the theme.
 
 ---
 
-## Shadows & Effects
+## Shadows & effects
 
 ### How do I use shadow classes?
-
-Shadow tokens use elevation naming:
 
 ```html
 <div class="shadow-elevation-1">Subtle lift</div>
@@ -290,33 +178,25 @@ Shadow tokens use elevation naming:
 <div class="shadow-elevation-5">Modal overlay</div>
 ```
 
-The number of elevation levels depends on your design system. Check `preview.html` for the full list.
-
 ### Are opacity and z-index tokens included?
 
-Yes. Opacity tokens use `alpha-` naming: `opacity-alpha-0`, `opacity-alpha-25`, `opacity-alpha-50`, `opacity-alpha-75`, `opacity-alpha-100`.
-
-Z-index tokens use `layer-` naming: `z-layer-base`, `z-layer-10`, `z-layer-50`, `z-layer-max`.
+Yes. In v3 they work as standard utilities (`opacity-alpha-50`, `z-layer-50`). In v4 they're `:root` properties and use arbitrary value syntax (`opacity-[--opacity-alpha-50]`, `z-[--z-layer-50]`).
 
 ---
 
-## Motion & Transitions
+## Motion & transitions
 
 ### How do I use duration and easing tokens?
 
-Combine them with Tailwind's `transition-*` utilities:
-
+**v3 (preset.js):** Both work as direct utility classes:
 ```html
-<button class="transition-colors duration-fast ease-standard hover:bg-brand-primary-600">
-  Hover me
-</button>
+<button class="transition-colors ease-standard duration-fast">Hover me</button>
 ```
 
-Available durations typically include: `instant`, `fast`, `base`, `moderate`, `slow`, `slower`.
-
-Available easings typically include: `linear`, `ease`, `ease-in`, `ease-out`, `ease-in-out`, `standard`, `decelerate`, `accelerate`, `bounce`.
-
-Check `preview.html` to see the exact values and hover to preview each curve.
+**v4 (theme.css):** Easing works directly, duration uses arbitrary value syntax:
+```html
+<button class="transition-colors ease-standard duration-[--duration-fast]">Hover me</button>
+```
 
 ---
 
@@ -324,24 +204,9 @@ Check `preview.html` to see the exact values and hover to preview each curve.
 
 ### What breakpoint prefixes are available?
 
-Depends on your design system, but typically:
+Typically: `xs:` (320px), `sm:` (640px), `md:` (768px), `lg:` (1024px), `xl:` (1280px), `2xl:` (1536px).
 
-| Prefix | Width |
-|---|---|
-| `xs:` | 320px |
-| `sm:` | 640px |
-| `md:` | 768px |
-| `lg:` | 1024px |
-| `xl:` | 1280px |
-| `2xl:` | 1536px |
-
-```html
-<div class="p-md md:p-xl lg:p-2xl">Responsive padding</div>
-```
-
-### Do these replace Tailwind's default breakpoints?
-
-Yes. The preset replaces the default `sm`, `md`, `lg`, `xl`, `2xl` breakpoints with values from your design system. In most cases the values are similar, but your design system may also add extra breakpoints like `xs`.
+In replace mode, these are the *only* breakpoints. In extend mode, they're added alongside any defaults with the same names (values from your design system take precedence).
 
 ---
 
@@ -349,19 +214,21 @@ Yes. The preset replaces the default `sm`, `md`, `lg`, `xl`, `2xl` breakpoints w
 
 ### What is `preview.html`?
 
-A self-contained HTML page bundled with the preset that visually showcases every token in your design system — colors, typography, spacing, radii, shadows, motion, and breakpoints. Open it in any browser. No build step, no dev server.
+A self-contained page that showcases every primitive and semantic token — colors, typography, spacing, radii, shadows, motion, breakpoints. Open in any browser, no build step needed.
 
-### Why does preview.html need an internet connection?
+Includes a **Default TW / DesignPush** comparison toggle and **dark mode** toggle.
 
-It loads the Tailwind Play CDN (`cdn.tailwindcss.com`) to generate utility classes on the fly. Without a connection, the Tailwind classes won't render (but the page layout will still display since it uses plain CSS for structure).
+### Why does it need an internet connection?
 
-### Can I use preview.html in production?
+It loads the Tailwind v3 CDN to generate utility classes on the fly.
 
-No. It's a development/review tool. The Tailwind Play CDN is not intended for production use. For production, use the preset in your normal Tailwind build pipeline.
+### Can I use it in production?
 
-### The preview looks wrong / missing sections
+No. It's a development/review tool. Use the theme in your normal build pipeline for production.
 
-The preview is generated dynamically from your token structure. If a section is missing, that token category doesn't exist in your design system. For example, if you haven't defined shadow tokens, the Shadows section won't appear.
+### The preview covers primitive and semantic tokens only
+
+Component-level tokens (patterns, variants, sizes) are not included — those are handled by the dp-react component library.
 
 ---
 
@@ -369,100 +236,59 @@ The preview is generated dynamically from your token structure. If a section is 
 
 ### Next.js
 
-```js
-// tailwind.config.js
-module.exports = {
-  presets: [require('./design-system/build/tailwind/preset')],
-  content: [
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
-}
-```
-
 ```css
 /* app/globals.css */
-@import '../design-system/build/core/variables.css';
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "../design-system/build/core/variables.css";
+@import "../design-system/build/tailwind/theme.css";
 ```
 
 ### Vite + React
 
-```js
-// tailwind.config.js
-module.exports = {
-  presets: [require('./design-system/build/tailwind/preset')],
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
-}
-```
-
 ```css
 /* src/index.css */
-@import '../design-system/build/core/variables.css';
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "../design-system/build/core/variables.css";
+@import "../design-system/build/tailwind/theme.css";
 ```
 
 ### Astro
 
-```js
-// tailwind.config.mjs
-import preset from './design-system/build/tailwind/preset.js';
-
-export default {
-  presets: [preset],
-  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-}
-```
-
 ```css
 /* src/styles/global.css */
-@import '../design-system/build/core/variables.css';
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "../design-system/build/core/variables.css";
+@import "../design-system/build/tailwind/theme.css";
 ```
 
-### Can I use the preset with CSS-in-JS libraries (styled-components, Emotion)?
+### CSS-in-JS (styled-components, Emotion)?
 
-The preset is a Tailwind config — it doesn't directly integrate with CSS-in-JS. However, you can access the resolved token values from the preset file directly:
+The `@theme` custom properties are on `:root`, so you can access them in any approach:
 
 ```js
-const preset = require('./design-system/build/tailwind/preset');
-const colors = preset.theme.colors;
-// colors.brand.primary['500'] → '#4F46E5'
+getComputedStyle(document.documentElement).getPropertyValue('--color-brand-primary-500');
 ```
-
-Or use the CSS variables from `variables.css`, which work in any styling approach.
 
 ---
 
-## Updating & workflow
+## Updating
 
-### How do I update the preset after changing tokens?
+### How do I update after changing tokens?
 
-1. Re-export from DesignPush (Full Package or select `build/tailwind/`).
-2. Replace the `build/tailwind/` folder in your project.
-3. Restart your dev server (Tailwind reads the config on startup).
+1. Re-export from DesignPush.
+2. Replace the `build/tailwind/` folder.
+3. Dev server hot-reloads automatically.
 
-Your existing utility classes pick up the new values automatically.
+### Can I edit theme.css by hand?
 
-### Can I edit `preset.js` by hand?
-
-You can, but your changes will be overwritten on the next export. If you need to extend the theme, do it in your `tailwind.config.js` via `theme.extend` instead.
+You can, but changes are overwritten on next export. Extend via a second `@theme` block instead.
 
 ### Do I need to re-export if I only changed semantic color values?
 
-If you only changed the light/dark values for existing semantic tokens, you only need to re-export `variables.css` (in `build/core/`). The preset references semantic colors by CSS variable name, not by value, so `preset.js` doesn't change.
+Only re-export `variables.css` (in `build/core/`). The theme references semantic colors by variable name, not value.
 
-If you added or removed semantic token keys, you need to re-export both `preset.js` and `variables.css`.
+If you added or removed semantic token keys, re-export both.
 
-### What tokens are NOT included in the preset?
+### What tokens are NOT in the theme?
 
-Pattern-level tokens, component-level tokens, semantic typography composites, semantic spacing aliases, focus ring tokens, and transition composites. These are too component-specific for a Tailwind config. Use the CSS variables export or the component CSS for those.
+Pattern-level tokens, component-level tokens, semantic typography composites, semantic spacing aliases, focus ring tokens, and transition composites. These are handled by the dp-react component library.
