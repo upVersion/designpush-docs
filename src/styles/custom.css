@@ -710,6 +710,16 @@ starlight-toc a[aria-current="true"] {
   stroke-width: var(--primitive-icon-stroke-thin);
 }
 
+/* Asides — note uses semantic info tokens */
+.starlight-aside--note {
+  --sl-color-asides-text-accent: var(--semantic-color-text-info-bold);
+  --sl-color-asides-border: var(--semantic-color-border-info-default);
+  background-color: var(--semantic-color-surface-info-subtle);
+  border: 1px solid var(--semantic-color-border-info-default);
+  border-inline-start-width: 1px;
+  border-radius: var(--primitive-radius-xl);
+}
+
 /* Prev/next navigation cards */
 .pagination-links a {
   background-color: var(--semantic-color-contrast-light) !important;
