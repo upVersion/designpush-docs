@@ -72,8 +72,8 @@ Throughout the DesignPush editor, colored badges display token reference paths:
 
 | Badge color | Layer | Example |
 |-------------|-------|---------|
-| Purple | Primitive | `primitive.radius.md` |
-| Teal | Semantic | `semantic.color.text.primary.default` |
+| Yellow | Primitive | `primitive.radius.md` |
+| Blue | Semantic | `semantic.color.text.primary.default` |
 
 **Click any badge to copy the full token path** to your clipboard.
 

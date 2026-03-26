@@ -76,15 +76,15 @@ Primitives are the raw materials. They define *what values exist* without saying
 | Typography | Font families (display, heading, body, mono), font sizes, weights, line heights, letter spacing |
 | Spacing | Named scale from `zero` to `6xl` |
 | Radius | Corner rounding from `zero` to `full` |
-| Border Width | `none` through `thick` |
-| Shadow | Elevation levels 1-5 |
+| Border Width | `none` through `heavy` |
+| Shadow | Elevation levels 1-6 |
 | Opacity | Alpha values from 0 to 100 |
 | Duration | Animation timing from `instant` to `slower` |
 | Easing | Curves like `standard`, `decelerate`, `bounce` |
 | Breakpoint | Responsive widths from `xs` to `2xl` |
 | Layout | Container widths and grid configuration |
 | Z-Index | Layer stacking from `base` to `max` |
-| Icon | Icon sizes (sm/md/lg) and stroke weights |
+| Icon | Icon sizes (xs through 4xl) and stroke weights |
 
 Primitives are **theme-independent** — `brand-primary-500` is always the same hex value regardless of light or dark mode.
 
@@ -186,7 +186,8 @@ When you publish your design system, DesignPush generates multiple file formats 
 | `_variables.scss` | SCSS variables | Import in SCSS projects |
 | `tokens.ts` | TypeScript | Type-safe token access in TS projects |
 | `tokens.js` | JavaScript | Token access in JS projects |
-| `preset.js` | Tailwind preset | Drop-in Tailwind theme replacement |
+| `theme.css` | Tailwind v4 theme | CSS `@theme` block for Tailwind v4 |
+| `preset.js` | Tailwind v3 preset | Drop-in Tailwind theme replacement |
 
 You don't need all of these. Most projects use CSS custom properties (`variables.css`) as the primary integration point, plus one or two others depending on the tech stack.
 

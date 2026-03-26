@@ -79,7 +79,7 @@ The plugin creates variable collections organized by token layer:
 
 Semantic variables use **VARIABLE_ALIAS** to reference their corresponding primitives — change a primitive and every semantic token updates automatically.
 
-### Text styles (developer tokens)
+### Text styles
 
 Complete text style hierarchy with variable bindings:
 
@@ -95,7 +95,20 @@ Each style binds font family, font size, and letter spacing to variables. Font w
 
 ### Effect styles
 
-- **Shadow styles** — box shadow effects with descriptions imported from token metadata (elevation-1 through elevation-5)
+- **Shadow styles** — box shadow effects with descriptions imported from token metadata (elevation-1 through elevation-6)
+
+### Developer-only tokens
+
+The plugin UI includes a **Developer Only** section for tokens that Figma doesn't natively support as design features. These are still imported as variables for documentation and reference in [Dev Mode](https://help.figma.com/hc/en-us/articles/15023124644247-Guide-to-Dev-Mode), but won't directly affect design elements on the canvas.
+
+| Token | Contents |
+|---|---|
+| **semantic.focus** | Focus ring width, offset, color, and opacity |
+| **primitive.duration** | Animation duration values |
+| **primitive.easing** | Easing function strings |
+| **primitive.opacity** | Opacity scale (alpha-0 through alpha-100) |
+| **primitive.z-index** | Layer stacking order values |
+| **semantic.transition** | Composed transition presets |
 
 ---
 
@@ -144,12 +157,46 @@ Semantic tokens reference primitives using curly-brace paths (e.g. `{primitive.c
 
 ---
 
+## Font requirements
+
+Figma plugins can only use fonts that are **already available** in Figma. This means:
+
+- **Google Fonts** — available automatically in Figma
+- **Locally installed fonts** — fonts installed on your machine are available in Figma desktop
+
+If your design tokens reference a font that isn't available, the plugin will **skip those text styles** and show a warning listing the missing fonts and how many styles were affected.
+
+### Installing custom fonts
+
+If your tokens use non-Google fonts (e.g. fonts from Fontshare, Adobe Fonts, or custom typefaces):
+
+1. Download and install the font files on your machine
+2. Restart Figma desktop (required for newly installed fonts to appear)
+3. Re-run the plugin — the text styles will now be created
+
+:::note
+Figma for web can only access Google Fonts. To use custom fonts in the browser, you'll need the [Figma Font Installer](https://www.figma.com/downloads/) running locally.
+:::
+
+### What happens when fonts are missing
+
+- The plugin creates all other tokens (variables, colors, spacing, etc.) normally
+- Text styles that depend on the missing font are skipped
+- A warning banner shows which fonts are missing and how many styles were skipped
+- Once you install the fonts, re-importing the same JSON will create the missing styles
+
+---
+
 ## Troubleshooting
 
 ### Variables not created
 - Make sure the category is checked in the plugin UI before importing
-- Verify your JSON matches DTCG format
-- Open the Figma console (**View > Developer > Show/Hide Console**) for errors
+
+### Text styles not created or partially missing
+- Check the warning banner after import — it will list any missing fonts
+- Install the required fonts locally and restart Figma
+- Re-import the tokens to create the missing styles
+- See [Font requirements](#font-requirements) above
 
 ### Semantic tokens not aliasing
 - Import primitive tokens first (or select both at the same time)

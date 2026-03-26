@@ -18,7 +18,7 @@ DesignPush is currently in beta. You can access the app at **<a href="https://be
 
 ## Known limitations
 
-- Some features are behind feature flags and may not yet be available (e.g. Tailwind CSS preset export)
+- Some features are still in development and may not yet be available
 - User sign-in and account management is currently in development. During beta, accessing your design system is via your browser profile. Access to your design system will persist across sessions unless browser cache is cleared. To test or generate additional design systems, use a different browser, different browser profile or incognito/private window
 - Component editing is currently limited to a selection of core components. Additional components will be added throughout the beta phase up to launch. Check back regularly for updates
 

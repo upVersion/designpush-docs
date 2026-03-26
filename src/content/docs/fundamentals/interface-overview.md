@@ -42,7 +42,7 @@ The sidebar is your primary navigation. It organizes all token categories into t
 |-----|-----------|-------|
 | **Primitive** | Color, Typography, Spacing, Radius, Border Width, Shadow, Opacity, Duration, Easing, Breakpoint, Layout, Z-Index, Icon | 13 |
 | **Semantic** | Color, Typography, Spacing, Focus, Transitions | 5 |
-| **Component** | Button, Badge, Text Input, Text Area, Select, Checkbox, Radio, Switch, Avatar, Tooltip, Tab Bar, Card, Modal | 13 |
+| **Component** | Button, Text Input, Badge, Card, Checkbox, Radio, Switch, Tooltip, Text Area, Avatar, Divider, Tab Bar, Select, Slider | 14 |
 
 Click a section tab to see its token categories. Click a category to open its showcase in the main editor.
 

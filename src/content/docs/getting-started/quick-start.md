@@ -31,7 +31,7 @@ Click the project name at the top of the sidebar and type a new name. This name 
 
 Start with colors — go to **Primitive > Color** in the sidebar. Click any swatch to open the color picker and adjust your brand palette.
 
-From there you can explore all 13 primitive categories (typography, spacing, radius, shadows, and more), 5 semantic categories, and 13 component token groups.
+From there you can explore all 13 primitive categories (typography, spacing, radius, shadows, and more), 5 semantic categories, and 14 component token groups.
 
 ## 4. Preview your changes
 

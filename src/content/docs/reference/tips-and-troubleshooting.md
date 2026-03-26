@@ -201,13 +201,13 @@ The Compose tab in each component showcase generates code snippets in JSX, JSON,
 
 DesignPush is currently in beta. Here are known limitations:
 
-- **Component showcases** — Button, Badge, and Text Input are fully editable. Additional components may be listed in the sidebar and preview menus but not yet fully implemented.
+- **Component showcases** — 14 components are fully editable: Button, Text Input, Badge, Card, Checkbox, Radio, Switch, Tooltip, Text Area, Avatar, Divider, Tab Bar, Select, and Slider.
 - **No undo** — There's no undo/redo for token edits. The Reset feature is the only way to revert changes, and it goes back to factory defaults, not to a previous state.
 - **No collaboration** — One user per design system. Real-time collaboration is not supported in the current version.
 - **No version history** — Token changes aren't versioned. Use your exported JSON files as snapshots for version tracking.
 - **No import** — You can't import existing token files into DesignPush. Projects start from the default token set.
 - **Desktop only** — Minimum 1024px viewport width. No tablet or mobile support.
-- **Web formats only** — Exports target web (CSS, SCSS, JS, TS, Tailwind*). Native mobile formats (iOS, Android) require processing the JSON exports with external tools. (* Tailwind integration currently in development. Coming soon)
+- **Web formats only** — Exports target web (CSS, SCSS, JS, TS, Tailwind, React components). Native mobile formats (iOS, Android) require processing the JSON exports with external tools.
 
 ---
 

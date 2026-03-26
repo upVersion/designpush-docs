@@ -55,6 +55,7 @@ export default defineConfig({
           collapsed: true,
           items: [
             { slug: 'output/publishing' },
+            { slug: 'output/react-components' },
           ],
         },
         {

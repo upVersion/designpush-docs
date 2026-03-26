@@ -129,7 +129,7 @@ Standard, non-editable weight tokens from **Thin** (100) to **Black** (900):
 | thin | 100 |
 | extralight | 200 |
 | light | 300 |
-| regular | 400 |
+| normal | 400 |
 | medium | 500 |
 | semibold | 600 |
 | bold | 700 |
@@ -142,7 +142,6 @@ Control vertical rhythm with named line-height tokens:
 
 | Token | Preset value |
 |-------|--------------|
-| none | 1 |
 | tight | 1.25 |
 | snug | 1.375 |
 | normal | 1.5 |
@@ -168,8 +167,8 @@ Fine-tune character spacing:
 --primitive-typography-family-heading: 'Instrument Sans', sans-serif;
 --primitive-typography-size-base: clamp(0.875rem, 0.825rem + 0.25vw, 1.125rem);
 --primitive-typography-weight-bold: 700;
---primitive-typography-lineheight-normal: 1.5;
---primitive-typography-letterspacing-tight: -0.025em;
+--primitive-typography-line-height-normal: 1.5;
+--primitive-typography-letter-spacing-tight: -0.025em;
 ```
 
 ---
@@ -250,10 +249,11 @@ Border width tokens define the thickness of borders and dividers:
 | Token | Description |
 |-------|-------------|
 | none | No border (0) |
-| thin | Subtle border (typically 1px) |
-| regular | Standard border |
-| medium | Emphasized border |
-| thick | Heavy border |
+| thin | Hairline border (0.5px) |
+| regular | Standard border (1px) |
+| medium | Emphasis border (2px) |
+| bold | Strong border (2.5px) |
+| heavy | Maximum emphasis (3px) |
 
 Toggle between `px` and `rem` display. Each token has a description field where you can note its intended use.
 
@@ -261,8 +261,8 @@ Toggle between `px` and `rem` display. Each token has a description field where 
 
 ```css
 --primitive-border-width-none: 0;
---primitive-border-width-thin: 1px;
---primitive-border-width-regular: 1.5px;
+--primitive-border-width-thin: 0.5px;
+--primitive-border-width-regular: 1px;
 ```
 
 ---
@@ -273,11 +273,12 @@ Shadow tokens create depth and elevation in your UI. DesignPush provides a multi
 
 | Token | Use case |
 |-------|----------|
-| elevation-1 | Subtle lift (cards at rest) |
+| elevation-1 | Subtle lift (cards, buttons) |
 | elevation-2 | Raised elements (hover states, dropdowns) |
-| elevation-3 | Floating elements (popovers, tooltips) |
-| elevation-4 | High elevation (modals, dialogs) |
-| elevation-5 | Maximum elevation (toast notifications) |
+| elevation-3 | Floating elements (toolbars, tooltips) |
+| elevation-4 | High elevation (modals, popovers) |
+| elevation-5 | Dialogs, drawers, tab bars |
+| elevation-6 | Top-level overlays |
 
 Higher elevation levels use **multi-layer shadows** — elevation 2+ combines two or more shadow layers for a more realistic depth effect. Each shadow token also includes separate values for light and dark modes (dark mode shadows tend to be more pronounced).
 
@@ -301,9 +302,17 @@ Opacity tokens define transparency levels for overlays, disabled states, and sub
 | alpha-0 | 0 (fully transparent) |
 | alpha-5 | 0.05 |
 | alpha-10 | 0.10 |
+| alpha-20 | 0.20 |
 | alpha-25 | 0.25 |
+| alpha-30 | 0.30 |
+| alpha-40 | 0.40 |
 | alpha-50 | 0.50 |
+| alpha-60 | 0.60 |
+| alpha-70 | 0.70 |
 | alpha-75 | 0.75 |
+| alpha-80 | 0.80 |
+| alpha-90 | 0.90 |
+| alpha-95 | 0.95 |
 | alpha-100 | 1.0 (fully opaque) |
 
 Each token displays both the decimal value and the percentage equivalent. Description fields let you document the purpose (e.g., "Disabled state opacity" for alpha-50).
@@ -325,11 +334,11 @@ Duration tokens control animation and transition timing:
 | Token | Typical value | Use case |
 |-------|--------------|----------|
 | instant | 0ms | Immediate state changes |
-| fast | 100ms | Micro-interactions (hover, focus) |
-| base | 200ms | Standard transitions |
-| moderate | 300ms | Noticeable animations |
-| slow | 500ms | Deliberate animations |
-| slower | 700ms | Dramatic transitions |
+| fast | 150ms | Micro-interactions (hover, focus) |
+| base | 300ms | Standard transitions |
+| moderate | 500ms | Noticeable animations |
+| slow | 700ms | Deliberate animations |
+| slower | 1000ms | Dramatic transitions |
 
 Each duration card includes a **play button** that triggers an animation preview — a bar fills across the card at the specified duration, so you can see exactly how fast or slow each timing feels.
 
@@ -337,8 +346,8 @@ Each duration card includes a **play button** that triggers an animation preview
 
 ```css
 --primitive-duration-instant: 0ms;
---primitive-duration-fast: 100ms;
---primitive-duration-base: 200ms;
+--primitive-duration-fast: 150ms;
+--primitive-duration-base: 300ms;
 ```
 
 ---
@@ -423,9 +432,9 @@ Visual preview bars show relative container widths.
 ### Export format
 
 ```css
---primitive-layout-container-md: 768px;
---primitive-layout-grid-columns: 12;
---primitive-layout-grid-gutter: 1.5rem;
+--primitive-layout-md: 1024px;
+--primitive-layout-cols: 12;
+--primitive-layout-gutter: 24px;
 ```
 
 ---
@@ -437,21 +446,23 @@ Z-index tokens control the stacking order of overlapping elements:
 | Token | Typical value | Use case |
 |-------|--------------|----------|
 | layer-base | 0 | Default layer |
-| layer-10 | 10 | Slightly elevated (sticky elements) |
-| layer-20 | 20 | Dropdowns |
-| layer-30 | 30 | Fixed elements |
-| layer-40 | 40 | Modals |
-| layer-50 | 50 | Popovers over modals |
-| layer-max | 9999 | Toast notifications, system overlays |
+| layer-10 | 10 | Dropdown layer |
+| layer-20 | 20 | Sticky layer |
+| layer-30 | 30 | Fixed layer |
+| layer-40 | 40 | Modal backdrop |
+| layer-50 | 50 | Modal layer |
+| layer-60 | 60 | Popover layer |
+| layer-70 | 70 | Tooltip layer |
+| layer-max | 9999 | System overlays |
 
 The showcase includes a **stacked-planes visualization** showing how z-index layers relate to each other, making it easy to understand the stacking context.
 
 ### Export format
 
 ```css
---primitive-zindex-layer-base: 0;
---primitive-zindex-layer-10: 10;
---primitive-zindex-layer-max: 9999;
+--primitive-z-index-layer-base: 0;
+--primitive-z-index-layer-10: 10;
+--primitive-z-index-layer-max: 9999;
 ```
 
 ---
@@ -464,17 +475,24 @@ Icon tokens control the size and stroke weight of icons in your design system, o
 
 | Token | Typical value |
 |-------|--------------|
+| xs | 12px |
 | sm | 16px |
 | md | 20px |
 | lg | 24px |
+| xl | 32px |
+| 2xl | 40px |
+| 3xl | 48px |
+| 4xl | 64px |
 
 ### Stroke
 
 | Token | Description |
 |-------|-------------|
-| thin | Light stroke weight |
-| regular | Standard stroke weight |
-| bold | Heavy stroke weight |
+| thin | Light stroke weight (1px) |
+| regular | Standard stroke weight (1.5px) |
+| medium | Emphasis stroke (2px) |
+| bold | Heavy stroke weight (2.5px) |
+| heavy | Maximum emphasis (3px) |
 
 Each token shows a preview using sample icons (home, heart) at the specified size and stroke weight. Display toggles between `px` and `rem`.
 

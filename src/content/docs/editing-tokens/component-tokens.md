@@ -95,8 +95,7 @@ Color selectors are dropdown menus showing semantic color options grouped by rol
 
 ### Compose tab *
 
-The Compose tab is an **interactive playground** where you assemble a complete component from your configured tokens. Select a variant, size, and layout to see the result. The tab provides:[preview-panel.md](assets/preview-panel.md)
-
+The Compose tab is an **interactive playground** where you assemble a complete component from your configured tokens. Select a variant, size, and layout to see the result. The tab provides:
 
 - **Variant selector** — Choose primary, secondary, ghost, etc.
 - **Size selector** — Choose sm, md, lg
@@ -154,7 +153,7 @@ Badges are small status indicators that communicate category or state.
 | **Neutral** | Gray tones |
 | **Primary** | Brand primary |
 | **Secondary** | Brand secondary |
-| **Accent** | Brand accent |
+| **Tertiary** | Brand tertiary |
 | **Success** | Green |
 | **Warning** | Amber |
 | **Error** | Red |
@@ -171,9 +170,8 @@ Badges are small status indicators that communicate category or state.
 
 | Size | Use case |
 |------|----------|
-| **XS** | Inline indicators, counts |
-| **SM** | Standard badges |
-| **MD** | Prominent badges, headers |
+| **SM** | Compact badges, inline indicators |
+| **MD** | Standard badges |
 
 ### Base properties
 
@@ -280,4 +278,4 @@ Through the same reference chain used everywhere in DesignPush. When you select 
 
 ### What components are available?
 
-The current beta includes **Button**, **Badge**, and **Text Input** as fully editable component showcases. The sidebar also lists upcoming components (Text Area, Select, Checkbox, Radio, Switch, Avatar, Tooltip, Tab Bar, Card, Modal) that will be added in future releases.
+The current beta includes 14 fully editable component showcases: **Button**, **Text Input**, **Badge**, **Card**, **Checkbox**, **Radio**, **Switch**, **Tooltip**, **Text Area**, **Avatar**, **Divider**, **Tab Bar**, **Select**, and **Slider**.
