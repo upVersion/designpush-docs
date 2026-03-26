@@ -10,6 +10,7 @@ A summary of notable updates to the DesignPush documentation.
 ## 2026-03-26
 
 - Added version history page under Reference
+- Added missing `none` line-height token to primitive tokens docs
 
 ## 2026-03-25
 
