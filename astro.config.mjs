@@ -73,6 +73,7 @@ export default defineConfig({
           items: [
             { slug: 'reference/beta-testing' },
             { slug: 'reference/tips-and-troubleshooting' },
+            { slug: 'reference/version-history' },
           ],
         },
       ],
